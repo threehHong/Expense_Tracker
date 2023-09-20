@@ -1,5 +1,14 @@
 <?php
-  include "config/db_connect.php"
+  include "config/db_connect.php";
+
+  $query = "SELECT * FROM Expense_Tracker";
+
+  $result = $conn->query($query);
+
+  $data = array();
+  while ($row = mysqli_fetch_array($result)) {
+      $data[] = $row;
+  }
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +41,26 @@
         <div id="wrap">
           <div class="board">
             <div class="expenditure">
-              <p> </p>
+              <?php
+                /* $query = "SELECT * FROM Expense_Tracker";
+
+                $result = $conn->query($query); */
+
+                $sum = 0;
+                
+                /* while($row = mysqli_fetch_array($result)) {
+                  if($row['amount']) {
+                    $sum += $row['amount'];
+                  }
+                } */
+                foreach ($data as $row) {
+                  if ($row['amount']) {
+                      $sum += $row['amount'];
+                  }
+                } 
+              ?>
+              
+              <p> <strong> <?php echo "총"." ".$sum."원 지출" ?> </strong> </p>
             </div>
   
             <div class="add_button">
@@ -106,17 +134,17 @@
   
                 <tbody>
                   <?php
-                    $query = "SELECT idx, date, item, amount FROM Expense_Tracker";
-    
-                    $result = $conn->query($query);
-                
-                    while($row = mysqli_fetch_array($result)) { 
+                    /* $result = $conn->query($query);
+
+                    while($row = mysqli_fetch_array($result)) {  */
+
+                    foreach($data as $row) {
                   ?>
-                    <tr>
+                    <tr> 
                       <th scope="row"> <?php echo $row['idx']; ?> </th>
                       <td> <?php echo $row['date']; ?> </td>
                       <td> <?php echo $row['item']; ?> </td>
-                      <td> <?php echo $row['amount']; ?> </td>
+                      <td> <?php echo number_format($row['amount']); ?> </td>
                     </tr>
                   <?php }; ?>
                 </tbody>
