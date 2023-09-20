@@ -60,7 +60,7 @@
                 } 
               ?>
               
-              <p> <strong> <?php echo "총"." ".$sum."원 지출" ?> </strong> </p>
+              <p> <strong> <?php echo "총"." ".number_format($sum)."원 지출" ?> </strong> </p>
             </div>
   
             <div class="add_button">
