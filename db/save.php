@@ -11,6 +11,9 @@
         $item = $items[$i];
         $amount = $amounts[$i];
 
+        // 숫자가 아닌 문자 제거
+        $amount = preg_replace('/[^0-9]/', '', $amount);
+
         /* echo $date." ".$item." ".$amount. "<br>"; */
 
         $query = "INSERT INTO Expense_Tracker (date, item, amount) VALUES ('$date', '$item', '$amount')";
