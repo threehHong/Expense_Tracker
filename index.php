@@ -49,7 +49,7 @@
               
               <thead>
                 <tr>
-                  <th scope="col"> # </th>
+                  <th scope="col"> No </th>
                   <th scope="col"> 날짜 </th>
                   <th scope="col"> 항목 </th>
                   <th scope="col"> 금액 </th>
@@ -77,7 +77,7 @@
               </tbody>
             </table>
   
-            <form action="./subpage/db.php" method="POST" class="input_list" onsubmit="onSubmit()">
+            <form action="./db/save.php" method="POST" class="input_list" onsubmit="onSubmit()">
   
               <div class="submit_btn_wrap">
                 <button type="submit" class="submit_btn"> 저장 </button>
@@ -92,21 +92,35 @@
                 </colgroup>
   
                 <tbody>
-                  <!-- <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td> Larry the Bird </td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                  </tr> -->
+                  <!-- 입력 데이터 위치 -->
                 </tbody>
               </table>
             </form>
+            <table class="table">
+                <colgroup>
+                  <col class="col1">
+                  <col class="col2">
+                  <col class="col3">
+                  <col class="col4">
+                </colgroup>
+  
+                <tbody>
+                  <?php
+                    $query = "SELECT idx, date, item, amount FROM Expense_Tracker";
+    
+                    $result = $conn->query($query);
+                
+                    while($row = mysqli_fetch_array($result)) { 
+                  ?>
+                    <tr>
+                      <th scope="row"> <?php echo $row['idx']; ?> </th>
+                      <td> <?php echo $row['date']; ?> </td>
+                      <td> <?php echo $row['item']; ?> </td>
+                      <td> <?php echo $row['amount']; ?> </td>
+                    </tr>
+                  <?php }; ?>
+                </tbody>
+              </table>
           </div>
         </div>
 
