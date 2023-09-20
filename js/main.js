@@ -94,15 +94,18 @@ function addValue() {
     inputAmount = inputAmount.replace(/[^\d]/g, "");
 
     // 총 지출 계산
-    let expenditure = $(".expenditure p");
-    sum = sum + Number(inputAmount);
+    const expenditure = $(".expenditure p strong");
+    const expenditureValueString = expenditure.html();
+    const expenditureValueNumber = expenditureValueString.replace(/[^\d]/g, "");
+
+    sum += Number(inputAmount) + Number(expenditureValueNumber);
 
     // 숫자를 3자리 마다 콤마로 구분.
     numParts = sum.toString().split(".");
     numParts[0] = numParts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     let commaSum = numParts.join(".");
 
-    expenditure.html(`<strong> 총 ${commaSum}원 지출 </strong>`);
+    expenditure.html(`총 ${commaSum}원 지출`);
 
     inputListTbody.prepend(inputList);
 
