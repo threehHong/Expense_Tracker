@@ -98,7 +98,9 @@ function addValue() {
     const expenditureValueString = expenditure.html();
     const expenditureValueNumber = expenditureValueString.replace(/[^\d]/g, "");
 
-    sum += Number(inputAmount) + Number(expenditureValueNumber);
+    console.log(expenditureValueNumber);
+
+    sum = Number(inputAmount) + Number(expenditureValueNumber);
 
     // 숫자를 3자리 마다 콤마로 구분.
     numParts = sum.toString().split(".");
