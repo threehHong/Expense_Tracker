@@ -120,8 +120,3 @@ function addValue() {
     alert("날짜, 항목, 금액 전부 빠짐 없이 입력하세요");
   }
 }
-
-/* Submit */
-/* function onSubmit() {
-  console.log("출력 확인");
-} */
