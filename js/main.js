@@ -75,10 +75,20 @@ function addValue() {
     numParts[0] = numParts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     inputAmount = numParts.join(".");
 
+    // 마지막 index의 다음 숫자
+    const idx = $("tbody tr:nth-child(1) .idx");
+    let nextIdx;
+
+    if (idx.html()) {
+      nextIdx = Number(idx.html()) + 1;
+    } else {
+      nextIdx = 1;
+    }
+
     // 입력한 항목들을 입력 항목 아래로 추가
     let inputList = `
       <tr class="input_group"> 
-        <th scope="row"> - </th> 
+        <th scope="row" class="idx"> ${nextIdx} </th> 
         <td> 
           <input type="text" id="datepicker" name="datepicker[]" value="${inputDate}"> 
         </td> 
