@@ -1,7 +1,7 @@
 <?php
   include "config/db_connect.php";
 
-  $query = "SELECT * FROM Expense_Tracker";
+  $query = "SELECT * FROM Expense_Tracker ORDER BY idx DESC";
 
   $result = $conn->query($query);
 
@@ -137,6 +137,9 @@
                     /* $result = $conn->query($query);
 
                     while($row = mysqli_fetch_array($result)) {  */
+
+                    // 배열 뒤집기.
+                    /* $reverseData = array_reverse($data); */
 
                     foreach($data as $row) {
                   ?>
