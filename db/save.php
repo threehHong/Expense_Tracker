@@ -6,7 +6,7 @@
     $items = $_POST['item'];
     $amounts = $_POST['amount'];
 
-    for($i = 0; $i < count($dates) ; $i++) {
+    for($i = count($dates) - 1; $i >= 0; $i--) {
         $date = $dates[$i];
         $item = $items[$i];
         $amount = $amounts[$i];
