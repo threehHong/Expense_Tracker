@@ -124,7 +124,8 @@
                 </tbody>
               </table>
             </form>
-            <table class="table">
+
+            <table class="table db">
                 <colgroup>
                   <col class="col1">
                   <col class="col2">
