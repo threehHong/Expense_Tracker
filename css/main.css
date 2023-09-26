@@ -60,6 +60,14 @@ td {
   margin-bottom: 0;
 }
 
+.input_list tr:first-child {
+  line-height: 24.4px;
+}
+
+.table.db tr {
+  line-height: 26.4px;
+}
+
 .submit_btn_wrap {
   position: absolute;
   width: 800px;
@@ -76,5 +84,5 @@ td {
   color: #fff;
   background: #136bd0;
   border: 1px solid #136bd0;
-  transform: translate(90%, -408%);
+  transform: translate(90%, -413%);
 }
