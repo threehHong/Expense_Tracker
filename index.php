@@ -39,6 +39,10 @@
 
     <body>
         <div id="wrap">
+          <div class="chart-container">
+            <canvas id="bar-chart"></canvas>
+          </div>
+
           <div class="board">
             <div class="expenditure">
               <?php
@@ -156,6 +160,8 @@
           </div>
         </div>
 
+        <script src='https://cdn.jsdelivr.net/npm/chart.js'></script>
         <script src="js/main.js"> </script>
+        <script src="js/chart.js"> </script>
     </body>
 </html>
