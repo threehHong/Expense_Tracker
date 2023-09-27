@@ -25,7 +25,7 @@ td {
 
 #wrap {
   width: 800px;
-  margin: 100px auto;
+  margin: 10px auto;
 }
 
 .input_table {
@@ -85,4 +85,18 @@ td {
   background: #136bd0;
   border: 1px solid #136bd0;
   transform: translate(90%, -413%);
+}
+
+/* chart */
+.chart-container {
+  /* width: 400px; */
+  height: 250px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+#bar-chart {
+  width: 100%;
 }
