@@ -58,7 +58,7 @@ amount.on("keyup", function (key) {
 });
 
 /********** button **********/
-let addBtn = $(".add_button input");
+let addBtn = $(".add_button");
 /* let input = $('.input tbody tr'); */
 let inputListTbody = $(".input_list tbody");
 let sum = 0;
