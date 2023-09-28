@@ -66,11 +66,7 @@
               
               <p> <strong> <?php echo "총"." ".number_format($sum)."원 지출" ?> </strong> </p>
             </div>
-  
-            <div class="add_button">
-              <input type="button" value="추가">
-            </div>
-  
+
             <table class="table input_table">
               <colgroup>
                 <col class="col1">
@@ -111,8 +107,9 @@
   
             <form action="./db/save.php" method="POST" class="input_list" onsubmit="onSubmit()">
   
-              <div class="submit_btn_wrap">
-                <button type="submit" class="submit_btn"> 저장 </button>
+              <div class="btn_wrap">
+                <input type="button" class="add_button" value="추가">
+                <button type="submit" class="save_btn"> 저장 </button>
               </div>
   
               <table class="table">
