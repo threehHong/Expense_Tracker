@@ -34,19 +34,8 @@ td {
 
 .expenditure {
   height: 25px;
-}
-
-.add_button {
-  display: flex;
-  justify-content: end;
-  margin: 10px;
-}
-
-.add_button input {
-  border-radius: 10px;
-  color: #fff;
-  background: #7f19d2;
-  border: 1px solid #7f19d2;
+  margin-bottom: 30px;
+  font-size: 15px;
 }
 
 .input_group input {
@@ -68,15 +57,25 @@ td {
   line-height: 26.4px;
 }
 
-.submit_btn_wrap {
+.btn_wrap {
   position: absolute;
   width: 800px;
   height: 30px;
   display: flex;
   justify-content: end;
+  top: 40%;
 }
 
-.submit_btn {
+.add_button {
+  width: 48px;
+  border-radius: 10px;
+  color: #fff;
+  background: #7f19d2;
+  border: 1px solid #7f19d2;
+  margin-right: 5px;
+}
+
+.save_btn {
   width: 48px;
   height: 30px;
   background: rgba(0, 0, 0, 0);
@@ -84,7 +83,6 @@ td {
   color: #fff;
   background: #136bd0;
   border: 1px solid #136bd0;
-  transform: translate(90%, -413%);
 }
 
 /* chart */
