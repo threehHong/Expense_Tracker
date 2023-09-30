@@ -35,7 +35,7 @@ td {
 .expenditure {
   height: 25px;
   margin-bottom: 30px;
-  font-size: 15px;
+  font-size: 14px;
 }
 
 .input_group input {
@@ -67,7 +67,8 @@ td {
 }
 
 .add_button {
-  width: 48px;
+  width: 46px;
+  height: 28px;
   border-radius: 10px;
   color: #fff;
   background: #7f19d2;
@@ -76,8 +77,8 @@ td {
 }
 
 .save_btn {
-  width: 48px;
-  height: 30px;
+  width: 46px;
+  height: 28px;
   background: rgba(0, 0, 0, 0);
   border-radius: 10px;
   color: #fff;
