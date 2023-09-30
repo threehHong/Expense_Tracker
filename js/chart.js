@@ -25,7 +25,7 @@ const data = {
   labels: labels,
   datasets: [
     {
-      label: "My First Dataset",
+      label: "지출 내역",
       data: dataAmount,
       backgroundColor: "rgba(255, 99, 132, 0.7)",
 
