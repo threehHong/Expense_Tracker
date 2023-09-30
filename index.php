@@ -134,7 +134,7 @@
                   <col class="col4">
                 </colgroup>
   
-                <tbody class="a">
+                <tbody>
                   <?php
                     /* $result = $conn->query($query);
 
@@ -148,8 +148,8 @@
                     <tr> 
                       <th scope="row" class="idx"> <?php echo $row['idx']; ?> </th>
                       <td> <?php echo $row['date']; ?> </td>
-                      <td> <?php echo $row['item']; ?> </td>
-                      <td> <?php echo number_format($row['amount']); ?> </td>
+                      <td class="db_item"> <?php echo $row['item']; ?> </td>
+                      <td class="db_amount"> <?php echo number_format($row['amount']); ?> </td>
                     </tr>
                   <?php }; ?>
                 </tbody>
