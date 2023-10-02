@@ -151,8 +151,8 @@
                       <td class="db_item"> <?php echo $row['item']; ?> </td>
                       <td class="db_amount"> <?php echo number_format($row['amount']); ?> </td>
                       <td class="btn_edit"> 
-                        <button class="delete_btn common_btn"> 삭제 </button> 
-                        <button class="edit_btn common_btn"> 수정 </button> 
+                        <a href="./db/delete.php?idx=<?php echo $row['idx']; ?>" class="delete_btn common_btn"> 삭제 </a>
+                        <a href="" class="edit_btn common_btn"> 수정 </a>
                       </td>
                     </tr>
                   <?php }; ?>
