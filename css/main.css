@@ -66,6 +66,10 @@ td {
   top: 285px;
 }
 
+.btn_edit {
+  position: absolute;
+}
+
 .common_btn {
   width: 42px;
   line-height: 22px;
