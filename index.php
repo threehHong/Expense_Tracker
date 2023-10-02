@@ -108,7 +108,7 @@
             <form action="./db/save.php" method="POST" class="input_list" onsubmit="onSubmit()">
   
               <div class="btn_wrap">
-                <input type="button" class="add_button common_btn" value="추가">
+                <input type="button" class="add_btn common_btn" value="추가">
                 <button type="submit" class="save_btn common_btn"> 저장 </button>
               </div>
   

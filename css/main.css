@@ -74,7 +74,7 @@ td {
   font-size: 14px;
 }
 
-.add_button {
+.add_btn {
   background: #7f19d2;
   border: 1px solid #7f19d2;
   margin-right: 5px;
@@ -107,9 +107,4 @@ td {
 
 #bar-chart {
   width: 100%;
-}
-
-/*  */
-.btn_edit {
-  position: absolute;
 }
