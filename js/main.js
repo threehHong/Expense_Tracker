@@ -57,7 +57,7 @@ amount.on("keyup", function (key) {
   }
 });
 
-/* td 범위 클릭시 해당 input focus  */
+/* 날짜, 항목, 금액 입력 부분에서 td 범위 클릭시 해당 input focus  */
 const inputTableTd = $(".input_table td");
 const inputTableDate = $(".input_table .datepicker");
 const inputTableItem = $(".input_table .item");
