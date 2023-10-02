@@ -66,24 +66,33 @@ td {
   top: 285px;
 }
 
-.add_button {
-  width: 46px;
-  height: 28px;
+.common_btn {
+  width: 42px;
+  line-height: 22px;
   border-radius: 10px;
   color: #fff;
+  font-size: 14px;
+}
+
+.add_button {
   background: #7f19d2;
   border: 1px solid #7f19d2;
   margin-right: 5px;
 }
 
 .save_btn {
-  width: 46px;
-  height: 28px;
-  background: rgba(0, 0, 0, 0);
-  border-radius: 10px;
-  color: #fff;
-  background: #136bd0;
-  border: 1px solid #136bd0;
+  background: #0a58ca;
+  border: 1px solid #0a58ca;
+}
+
+.delete_btn {
+  background: rgb(240, 10, 10);
+  border: 1px solid rgb(240, 10, 10);
+}
+
+.edit_btn {
+  background: #0a58ca;
+  border: 1px solid #0a58ca;
 }
 
 /* chart */
@@ -98,4 +107,9 @@ td {
 
 #bar-chart {
   width: 100%;
+}
+
+/*  */
+.btn_edit {
+  position: absolute;
 }
