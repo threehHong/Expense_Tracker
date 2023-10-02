@@ -21,6 +21,7 @@
 th,
 td {
   text-align: center;
+  vertical-align: middle;
 }
 
 #wrap {
@@ -45,6 +46,14 @@ td {
   text-align: center;
 }
 
+.input_group a {
+  transform: translateX(9999px);
+}
+
+.input_group .btn_edit {
+  height: 67.6px;
+}
+
 .table.input {
   margin-bottom: 0;
 }
@@ -58,16 +67,21 @@ td {
 }
 
 .btn_wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  top: 395px;
   position: absolute;
-  width: 800px;
   height: 30px;
   display: flex;
   justify-content: end;
-  top: 285px;
+  padding-right: 9px;
+  transform: translateX(749px);
 }
 
 .btn_edit {
-  position: absolute;
+  display: flex;
+  flex-direction: column;
 }
 
 .common_btn {
@@ -78,27 +92,33 @@ td {
   color: #fff;
   font-size: 14px;
   text-decoration: none;
+  padding: 0;
 }
 
 .add_btn {
   background: #7f19d2;
   border: 1px solid #7f19d2;
-  margin-right: 5px;
+  order: 2;
 }
 
 .save_btn {
   background: #0a58ca;
   border: 1px solid #0a58ca;
+  order: 1;
+  margin-bottom: 3px;
 }
 
 .delete_btn {
   background: rgb(240, 10, 10);
   border: 1px solid rgb(240, 10, 10);
+  order: 2;
 }
 
 .edit_btn {
   background: #0a58ca;
   border: 1px solid #0a58ca;
+  order: 1;
+  margin-bottom: 3px;
 }
 
 /* chart */
