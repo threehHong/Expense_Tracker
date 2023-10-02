@@ -71,11 +71,13 @@ td {
 }
 
 .common_btn {
+  display: inline-block;
   width: 42px;
   line-height: 22px;
   border-radius: 10px;
   color: #fff;
   font-size: 14px;
+  text-decoration: none;
 }
 
 .add_btn {
