@@ -98,6 +98,10 @@ function addValue() {
         <td> 
           <input type="text" class="amount" name="amount[]" value="${inputAmount}"> 
         </td>
+        <td class="btn_edit btn"> 
+          <button class="delete_btn common_btn"> 삭제 </button> 
+          <button class="edit_btn common_btn"> 수정 </button> 
+        </td>
       </tr>`;
 
     // 숫자가 아닌 문자를 제거.

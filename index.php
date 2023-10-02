@@ -108,8 +108,8 @@
             <form action="./db/save.php" method="POST" class="input_list" onsubmit="onSubmit()">
   
               <div class="btn_wrap">
-                <input type="button" class="add_button" value="추가">
-                <button type="submit" class="save_btn"> 저장 </button>
+                <input type="button" class="add_button common_btn" value="추가">
+                <button type="submit" class="save_btn common_btn"> 저장 </button>
               </div>
   
               <table class="table">
@@ -150,6 +150,10 @@
                       <td> <?php echo $row['date']; ?> </td>
                       <td class="db_item"> <?php echo $row['item']; ?> </td>
                       <td class="db_amount"> <?php echo number_format($row['amount']); ?> </td>
+                      <td class="btn_edit"> 
+                        <button class="delete_btn common_btn"> 삭제 </button> 
+                        <button class="edit_btn common_btn"> 수정 </button> 
+                      </td>
                     </tr>
                   <?php }; ?>
                 </tbody>
