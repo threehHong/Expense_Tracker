@@ -57,6 +57,27 @@ amount.on("keyup", function (key) {
   }
 });
 
+/* td 범위 클릭시 해당 input focus  */
+const inputTableTd = $(".input_table td");
+const inputTableDate = $(".input_table .datepicker");
+const inputTableItem = $(".input_table .item");
+const inputTableAmount = $(".input_table .amount");
+
+inputTableTd.on("click", function () {
+  childElements = $(this).children();
+  switch (childElements.attr("class")) {
+    case "datepicker hasDatepicker":
+      inputTableDate.focus();
+      break;
+    case "item":
+      inputTableItem.focus();
+      break;
+    case "amount":
+      inputTableAmount.focus();
+      break;
+  }
+});
+
 /********** button **********/
 let addBtn = $(".add_btn");
 /* let input = $('.input tbody tr'); */
