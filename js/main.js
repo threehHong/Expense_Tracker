@@ -98,12 +98,27 @@ const editBtn = $(".edit_btn");
 const deleteBtn = $(".delete_btn");
 const completeBtn = $(".complete_btn");
 const cancelBtn = $(".cancel_btn");
+const dbRow = $(".db_row");
 
 editBtn.on("click", function () {
   const row = $(this).closest(".db_row");
   const rowBtnEditGroup = row.find(".btn_edit");
 
+  $(".input_table").addClass("opacity");
+  $(".input_list").addClass("opacity");
+
+  dbRow.each(function () {
+    if (!$(this).is(row)) {
+      $(this).addClass("opacity");
+    }
+  });
+
   row.find("input").prop("disabled", false);
+
+  // input 입력값의 끝에 커서 위치하게 하는 코드
+  const itemStrLength = row.find(".item").val().length;
+  row.find(".item").focus();
+  row.find(".item").get(0).setSelectionRange(itemStrLength, itemStrLength);
 
   rowBtnEditGroup.children(".edit_btn").addClass("hidden");
   rowBtnEditGroup.children(".delete_btn").addClass("hidden");
@@ -115,6 +130,15 @@ editBtn.on("click", function () {
 cancelBtn.on("click", function () {
   const row = $(this).closest(".db_row");
   const rowBtnEditGroup = row.find(".btn_edit");
+
+  $(".input_table").removeClass("opacity");
+  $(".input_list").removeClass("opacity");
+
+  dbRow.each(function () {
+    if (!$(this).is(row)) {
+      $(this).removeClass("opacity");
+    }
+  });
 
   row.find("input").prop("disabled", false);
 
