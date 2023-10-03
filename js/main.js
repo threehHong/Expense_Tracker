@@ -2,20 +2,24 @@ const date = $(".datepicker");
 const item = $(".item");
 const amount = $(".amount");
 
+const inputListAmount = $(".input_list .amount");
+
 /********** 날짜 **********/
 let inputDate = null;
 let today = new Date();
-$("#datepicker").datepicker({
-  dateFormat: "yy-mm-dd",
+$(".datepicker").each(function () {
+  $(this).datepicker({
+    dateFormat: "yy-mm-dd",
 
-  onSelect: function (date) {
-    inputDate = date;
+    onSelect: function (date) {
+      inputDate = date;
 
-    console.log(inputDate);
-  },
+      console.log(inputDate);
+    },
+  });
 });
 
-$("#datepicker").datepicker("setDate", today);
+$(".datepicker.input_date").datepicker("setDate", today);
 let formattedToday = $.datepicker.formatDate("yy-mm-dd", today);
 inputDate = formattedToday;
 
@@ -35,6 +39,7 @@ item.on("keyup", function (key) {
 /********** 금액 **********/
 // amount에 입력된 값 3자리 마다 콤마로 구분해주는 함수(로직)
 let inputAmount = null;
+
 amount.on("input", function (key) {
   // input에 입력할 때마다 함수가 실행됨
   // 입력값에서 콤마를 제거.
@@ -150,7 +155,7 @@ function addValue() {
 
     // 입력한 항목들을 입력 항목 아래로 추가
     let inputList = `
-      <tr class="input_group"> 
+      <tr> 
         <th scope="row" class="idx">
           <input type="number" name="idx[]" value="${nextIdx}" disabled> 
         </th> 
@@ -191,9 +196,9 @@ function addValue() {
     inputListTbody.prepend(inputList);
 
     // 내용 초기화
-    date.val("");
-    item.val("");
-    amount.val("");
+    $(".input_group .date").val("");
+    $(".input_group .item").val("");
+    $(".input_group .amount").val("");
 
     // 오늘 날짜로 설정
     $("#datepicker").datepicker("setDate", today);
