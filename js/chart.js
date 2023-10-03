@@ -4,8 +4,12 @@ const databaseRow = $(".table.db tr");
 const dataGroups = {};
 
 databaseRow.each((index, item) => {
-  const dbRowItem = $(item).children(".db_item").html().trim();
-  const dbRowAmount = $(item).children(".db_amount").html().replace(/,/g, "");
+  const dbRowItem = $(item).children(".db_item").find("input").val();
+  const dbRowAmount = $(item)
+    .children(".db_amount")
+    .find("input")
+    .val()
+    .replace(/,/g, "");
 
   if (!dataGroups[dbRowItem]) {
     dataGroups[dbRowItem] = [];
