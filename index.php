@@ -46,17 +46,9 @@
           <div class="board">
             <div class="expenditure">
               <?php
-                /* $query = "SELECT * FROM Expense_Tracker";
-
-                $result = $conn->query($query); */
 
                 $sum = 0;
                 
-                /* while($row = mysqli_fetch_array($result)) {
-                  if($row['amount']) {
-                    $sum += $row['amount'];
-                  }
-                } */
                 foreach ($data as $row) {
                   if ($row['amount']) {
                       $sum += $row['amount'];
@@ -143,13 +135,6 @@
   
                 <tbody>
                   <?php
-                    /* $result = $conn->query($query);
-  
-                    while($row = mysqli_fetch_array($result)) {  */
-  
-                    // 배열 뒤집기.
-                    /* $reverseData = array_reverse($data); */
-  
                     foreach($data as $row) {
                   ?>
                     <tr class="db_row">
