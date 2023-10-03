@@ -84,7 +84,7 @@
                   </td>
   
                   <td>
-                    <input type="text" id="datepicker" class="datepicker" name="date[]" autocomplete="off" required>
+                    <input type="text" class="datepicker input_date" name="date[]" autocomplete="off" required>
                   </td>
                   
                   <td>
@@ -142,13 +142,13 @@
                         <input type="number" name="idx[]" value="<?php echo $row['idx']; ?>" disabled> 
                       </th>
                       <td> 
-                        <input type="text" name="date[]" value="<?php echo $row['date']; ?>" disabled> 
+                        <input type="text" class="datepicker" name="date[]" value="<?php echo $row['date']; ?>" disabled> 
                       </td>
                       <td class="db_item"> 
-                        <input type="text" name="item[]" value="<?php echo $row['item']; ?>" autocomplete="off" disabled>
+                        <input type="text" class="item" name="item[]" value="<?php echo $row['item']; ?>" autocomplete="off" disabled>
                       </td>
                       <td class="db_amount"> 
-                        <input type="text" name="amount[]" value="<?php echo number_format($row['amount']); ?>" autocomplete="off" disabled>
+                        <input type="text" class="amount" name="amount[]" value="<?php echo number_format($row['amount']); ?>" autocomplete="off" disabled>
                       </td>
                       <td class="btn_edit"> 
                         <a href="./db/delete.php?idx=<?php echo $row['idx']; ?>" class="delete_btn common_btn"> 삭제 </a>
