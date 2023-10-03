@@ -132,7 +132,8 @@
               </table>
             </form>
 
-            <table class="table db">
+            <form action="./db/edit.php" method="POST" class="" onsubmit="onSubmit()">
+              <table class="table db">
                 <colgroup>
                   <col class="col1">
                   <col class="col2">
@@ -143,27 +144,40 @@
                 <tbody>
                   <?php
                     /* $result = $conn->query($query);
-
+  
                     while($row = mysqli_fetch_array($result)) {  */
-
+  
                     // 배열 뒤집기.
                     /* $reverseData = array_reverse($data); */
-
+  
                     foreach($data as $row) {
                   ?>
-                    <tr> 
-                      <th scope="row" class="idx"> <?php echo $row['idx']; ?> </th>
-                      <td> <?php echo $row['date']; ?> </td>
-                      <td class="db_item"> <?php echo $row['item']; ?> </td>
-                      <td class="db_amount"> <?php echo number_format($row['amount']); ?> </td>
+                    <tr class="db_row">
+                      <th scope="row" class="idx">
+                        <input type="number" name="idx[]" value="<?php echo $row['idx']; ?>" disabled> 
+                      </th>
+                      <td> 
+                        <input type="text" name="date[]" value="<?php echo $row['date']; ?>" disabled> 
+                      </td>
+                      <td class="db_item"> 
+                        <input type="text" name="item[]" value="<?php echo $row['item']; ?>" autocomplete="off" disabled>
+                      </td>
+                      <td class="db_amount"> 
+                        <input type="text" name="amount[]" value="<?php echo number_format($row['amount']); ?>" autocomplete="off" disabled>
+                      </td>
                       <td class="btn_edit"> 
                         <a href="./db/delete.php?idx=<?php echo $row['idx']; ?>" class="delete_btn common_btn"> 삭제 </a>
-                        <a href="" class="edit_btn common_btn"> 수정 </a>
+                        <a class="edit_btn common_btn"> 수정 </a>
+                        
+                        <a class="cancel_btn common_btn hidden"> 취소 </a>
+                        <button type="submit" class="complete_btn common_btn hidden"> 완료 </button>
                       </td>
                     </tr>
                   <?php }; ?>
                 </tbody>
               </table>
+            </form>
+
           </div>
         </div>
 
