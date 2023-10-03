@@ -104,12 +104,12 @@ editBtn.on("click", function () {
   const row = $(this).closest(".db_row");
   const rowBtnEditGroup = row.find(".btn_edit");
 
-  $(".input_table").addClass("opacity");
-  $(".input_list").addClass("opacity");
+  $(".input_table").addClass("inactive");
+  $(".input_list").addClass("inactive");
 
   dbRow.each(function () {
     if (!$(this).is(row)) {
-      $(this).addClass("opacity");
+      $(this).addClass("inactive");
     }
   });
 
@@ -131,12 +131,12 @@ cancelBtn.on("click", function () {
   const row = $(this).closest(".db_row");
   const rowBtnEditGroup = row.find(".btn_edit");
 
-  $(".input_table").removeClass("opacity");
-  $(".input_list").removeClass("opacity");
+  $(".input_table").removeClass("inactive");
+  $(".input_list").removeClass("inactive");
 
   dbRow.each(function () {
     if (!$(this).is(row)) {
-      $(this).removeClass("opacity");
+      $(this).removeClass("inactive");
     }
   });
 
