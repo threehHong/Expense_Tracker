@@ -88,6 +88,38 @@ addBtn.on("click", () => {
   addValue();
 });
 
+/********** 수정 **********/
+const editBtn = $(".edit_btn");
+const deleteBtn = $(".delete_btn");
+const completeBtn = $(".complete_btn");
+const cancelBtn = $(".cancel_btn");
+
+editBtn.on("click", function () {
+  const row = $(this).closest(".db_row");
+  const rowBtnEditGroup = row.find(".btn_edit");
+
+  row.find("input").prop("disabled", false);
+
+  rowBtnEditGroup.children(".edit_btn").addClass("hidden");
+  rowBtnEditGroup.children(".delete_btn").addClass("hidden");
+
+  rowBtnEditGroup.children(".complete_btn").removeClass("hidden");
+  rowBtnEditGroup.children(".cancel_btn").removeClass("hidden");
+});
+
+cancelBtn.on("click", function () {
+  const row = $(this).closest(".db_row");
+  const rowBtnEditGroup = row.find(".btn_edit");
+
+  row.find("input").prop("disabled", false);
+
+  rowBtnEditGroup.children(".edit_btn").removeClass("hidden");
+  rowBtnEditGroup.children(".delete_btn").removeClass("hidden");
+
+  rowBtnEditGroup.children(".complete_btn").addClass("hidden");
+  rowBtnEditGroup.children(".cancel_btn").addClass("hidden");
+});
+
 /********** module - addValue **********/
 function addValue() {
   if (date.val() && item.val() && amount.val()) {
@@ -97,11 +129,21 @@ function addValue() {
     inputAmount = numParts.join(".");
 
     // 마지막 index의 다음 숫자
-    const idx = $("tbody tr:nth-child(1) .idx");
-    let nextIdx;
+    /* const idx = $("tbody tr:nth-child(1) .idx input"); */
+    const idx = $(".db_row:nth-child(1) .idx input");
+
+    /* let nextIdx;
 
     if (idx.html()) {
       nextIdx = Number(idx.html()) + 1;
+    } else {
+      nextIdx = 1;
+    } */
+
+    let nextIdx;
+
+    if (idx.val()) {
+      nextIdx = Number(idx.val()) + 1;
     } else {
       nextIdx = 1;
     }
@@ -109,15 +151,17 @@ function addValue() {
     // 입력한 항목들을 입력 항목 아래로 추가
     let inputList = `
       <tr class="input_group"> 
-        <th scope="row" class="idx"> ${nextIdx} </th> 
+        <th scope="row" class="idx">
+          <input type="number" name="idx[]" value="${nextIdx}" disabled> 
+        </th> 
         <td> 
           <input type="text" id="datepicker" name="datepicker[]" value="${inputDate}"> 
         </td> 
         <td> 
-          <input type="text" class="item" name="item[]" value="${inputItem}"> 
+          <input type="text" class="item" name="item[]" value="${inputItem}" autocomplete="off"> 
         </td> 
         <td> 
-          <input type="text" class="amount" name="amount[]" value="${inputAmount}"> 
+          <input type="text" class="amount" name="amount[]" value="${inputAmount}" autocomplete="off"> 
         </td>
         <td class="btn_edit btn"> 
           <button class="delete_btn common_btn"> 삭제 </button> 
