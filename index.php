@@ -97,7 +97,7 @@
 
                   <td class="btn_edit"> 
                     <a href="./db/delete.php?idx=<?php echo $row['idx']; ?>" class="delete_btn common_btn"> 삭제 </a>
-                    <a href="" class="edit_btn common_btn"> 수정 </a>
+                    <a class="edit_btn common_btn"> 수정 </a>
                   </td>
                 </tr>
               </tbody>
