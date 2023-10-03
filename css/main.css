@@ -29,6 +29,7 @@ input {
   border: none;
   outline: 0;
   text-align: center;
+  color: #000;
   background: #fff;
 }
 
@@ -59,11 +60,10 @@ input[type="number"] {
   font-size: 14px;
 }
 
-.input_group a {
-  transform: translateX(9999px);
-}
-
 .input_group .btn_edit {
+  position: relative;
+  opacity: 0;
+  z-index: -999;
   height: 67.6px;
 }
 
