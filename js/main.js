@@ -158,16 +158,7 @@ function addValue() {
     inputAmount = numParts.join(".");
 
     // 마지막 index의 다음 숫자
-    /* const idx = $("tbody tr:nth-child(1) .idx input"); */
-    const idx = $(".db_row:nth-child(1) .idx input");
-
-    /* let nextIdx;
-
-    if (idx.html()) {
-      nextIdx = Number(idx.html()) + 1;
-    } else {
-      nextIdx = 1;
-    } */
+    const idx = $("tbody tr:nth-child(1) .idx input");
 
     let nextIdx;
 
