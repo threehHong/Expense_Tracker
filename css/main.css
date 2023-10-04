@@ -73,7 +73,8 @@ input[type="number"] {
   position: relative;
   opacity: 0;
   z-index: -999;
-  height: 67.6px;
+  /* height: 67.6px; */
+  height: 44.4px;
 }
 
 .table.input {
@@ -98,14 +99,42 @@ input[type="number"] {
   display: flex;
   justify-content: end;
   padding-right: 9px;
-  transform: translateX(749px);
+  transform: translateX(771px);
 }
 
 .btn_edit {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
 }
 
+button {
+  border: none;
+  background: #fff;
+  padding: 0;
+}
+
+img {
+  width: 20px;
+}
+
+.save_btn {
+  transform: translateY(-85px);
+}
+
+.add_btn {
+  transform: translateY(-25px);
+}
+
+.edit_btn,
+.complete_btn {
+  transform: translateX(-5px);
+}
+
+.btn_edit img {
+  width: 15px;
+}
+
+/* 
 .common_btn {
   display: inline-block;
   width: 42px;
@@ -128,9 +157,9 @@ input[type="number"] {
   border: 1px solid #0a58ca;
   order: 1;
   margin-bottom: 3px;
-}
+} */
 
-.delete_btn {
+/* .delete_btn {
   background: rgb(240, 10, 10);
   border: 1px solid rgb(240, 10, 10);
   order: 2;
@@ -154,7 +183,7 @@ input[type="number"] {
   border: 1px solid #0a58ca;
   order: 1;
   margin-bottom: 3px;
-}
+} */
 
 /* chart */
 .chart-container {
