@@ -106,8 +106,13 @@
             <form action="./db/save.php" method="POST" class="input_list" onsubmit="onSubmit()">
   
               <div class="btn_wrap">
-                <input type="button" class="add_btn common_btn" value="추가">
-                <button type="submit" class="save_btn common_btn"> 저장 </button>
+                <!-- <input type="button" class="add_btn common_btn" value="추가"> -->
+
+                <button type="submit" class="save_btn common_btn"> 
+                  <img src="./asset/image/button/save.svg" alt="save_button">
+                </button>
+
+                <img src="./asset/image/button/add.svg" class="add_btn common_btn" alt="add_button">
               </div>
   
               <table class="table">
@@ -151,11 +156,19 @@
                         <input type="text" class="amount" name="amount[]" value="<?php echo number_format($row['amount']); ?>" autocomplete="off" disabled>
                       </td>
                       <td class="btn_edit"> 
-                        <a href="./db/delete.php?idx=<?php echo $row['idx']; ?>" class="delete_btn common_btn"> 삭제 </a>
-                        <a class="edit_btn common_btn"> 수정 </a>
+                        <a class="edit_btn common_btn">
+                          <img src="./asset/image/button/edit.svg" alt="edit_button">
+                        </a>
+                        <a href="./db/delete.php?idx=<?php echo $row['idx']; ?>" class="delete_btn common_btn">
+                          <img src="./asset/image/button/delete.svg" alt="delete_button">
+                        </a>
                         
-                        <a class="cancel_btn common_btn hidden"> 취소 </a>
-                        <button type="submit" class="complete_btn common_btn hidden"> 완료 </button>
+                        <button type="submit" class="complete_btn common_btn hidden"> 
+                          <img src="./asset/image/button/complete.svg" alt="complete_button">
+                        </button>
+                        <a class="cancel_btn common_btn hidden"> 
+                          <img src="./asset/image/button/cancel.svg" alt="cancel_button">
+                        </a>
                       </td>
                     </tr>
                   <?php }; ?>
