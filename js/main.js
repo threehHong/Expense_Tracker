@@ -198,8 +198,19 @@ function addValue() {
           <input type="text" class="amount" name="amount[]" value="${inputAmount}" autocomplete="off"> 
         </td>
         <td class="btn_edit btn"> 
-          <button class="delete_btn common_btn"> 삭제 </button> 
-          <button class="edit_btn common_btn"> 수정 </button> 
+          <a class="edit_btn common_btn">
+            <img src="./asset/image/button/edit.svg" alt="edit_button">
+          </a>
+          <a href="./db/delete.php?idx=<?php echo $row['idx']; ?>" class="delete_btn common_btn">
+            <img src="./asset/image/button/delete.svg" alt="delete_button">
+          </a>
+          
+          <button type="submit" class="complete_btn common_btn hidden"> 
+            <img src="./asset/image/button/complete.svg" alt="complete_button">
+          </button>
+          <a class="cancel_btn common_btn hidden"> 
+            <img src="./asset/image/button/cancel.svg" alt="cancel_button">
+          </a>
         </td>
       </tr>`;
 
