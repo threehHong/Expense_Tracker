@@ -140,7 +140,7 @@ cancelBtn.on("click", function () {
     }
   });
 
-  row.find("input").prop("disabled", false);
+  row.find("input").prop("disabled", true);
 
   rowBtnEditGroup.children(".edit_btn").removeClass("hidden");
   rowBtnEditGroup.children(".delete_btn").removeClass("hidden");
