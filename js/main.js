@@ -100,6 +100,10 @@ const completeBtn = $(".complete_btn");
 const cancelBtn = $(".cancel_btn");
 const dbRow = $(".db_row");
 
+let previousValueDate = null;
+let previousValueItem = null;
+let previousValueAmount = null;
+
 editBtn.on("click", function () {
   const row = $(this).closest(".db_row");
   const rowBtnEditGroup = row.find(".btn_edit");
@@ -114,6 +118,12 @@ editBtn.on("click", function () {
   });
 
   row.find("input").prop("disabled", false);
+
+  previousValueDate = row.find(".datepicker").val();
+  previousValueItem = row.find(".item").val();
+  previousValueAmount = row.find(".amount").val();
+
+  console.log(previousValueDate, previousValueItem, previousValueAmount);
 
   // input 입력값의 끝에 커서 위치하게 하는 코드
   const itemStrLength = row.find(".item").val().length;
@@ -141,6 +151,10 @@ cancelBtn.on("click", function () {
   });
 
   row.find("input").prop("disabled", true);
+
+  row.find(".datepicker").val(previousValueDate);
+  row.find(".item").val(previousValueItem);
+  row.find(".amount").val(previousValueAmount);
 
   rowBtnEditGroup.children(".edit_btn").removeClass("hidden");
   rowBtnEditGroup.children(".delete_btn").removeClass("hidden");
