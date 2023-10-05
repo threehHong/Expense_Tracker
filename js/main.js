@@ -19,13 +19,37 @@ $(".datepicker").each(function () {
   });
 });
 
-$(".datepicker.input_date").datepicker("setDate", today);
+// Datepicker를 이벤트 위임으로 처리할 부모 요소 선택자
+const parentSelector = ".datepicker-container";
+
+$(document).on("focus", ".datepicker", function () {
+  // 이벤트 위임으로 처리할 때, Datepicker를 동적으로 생성
+  $(this).datepicker({
+    dateFormat: "yy-mm-dd",
+    beforeShow: function (input, inst) {
+      // Datepicker를 부모 요소에 추가
+      inst.dpDiv.appendTo($(input).closest(parentSelector));
+    },
+    onSelect: function (date) {
+      inputDate = date;
+      console.log(inputDate);
+    },
+  });
+});
+
+/* 추가시 오늘 날짜로 고정되는 로직 */
+/* $(".datepicker.input_date").datepicker("setDate", today);
 let formattedToday = $.datepicker.formatDate("yy-mm-dd", today);
+inputDate = formattedToday; */
+/* 추가시 바꾼 날짜로 고정되는 로직 */
+let formattedToday = $.datepicker.formatDate("yy-mm-dd", today);
+$(".datepicker.input_date").datepicker("setDate", formattedToday);
 inputDate = formattedToday;
 
 /********** 항목 **********/
 let inputItem = null;
-item.blur(function (key) {
+// item.blur(function (key) {
+$(document).on("blur", ".item", function (key) {
   inputItem = $(this).val();
   console.log(inputItem);
 });
@@ -40,7 +64,8 @@ item.on("keyup", function (key) {
 // amount에 입력된 값 3자리 마다 콤마로 구분해주는 함수(로직)
 let inputAmount = null;
 
-amount.on("input", function (key) {
+// amount.on("input", function (key) {
+$(document).on("input", ".amount", function () {
   // input에 입력할 때마다 함수가 실행됨
   // 입력값에서 콤마를 제거.
   inputAmount = $(this).val().replace(/,/g, "");
@@ -104,8 +129,11 @@ let previousValueDate = null;
 let previousValueItem = null;
 let previousValueAmount = null;
 
-editBtn.on("click", function () {
-  const row = $(this).closest(".db_row");
+/* editBtn.on("click", function () { */
+
+$(document).on("click", ".edit_btn", function () {
+  /* const row = $(this).closest(".db_row"); */
+  const row = $(this).closest("tr");
   const rowBtnEditGroup = row.find(".btn_edit");
 
   $(".input_table").addClass("inactive");
@@ -137,30 +165,38 @@ editBtn.on("click", function () {
   rowBtnEditGroup.children(".cancel_btn").removeClass("hidden");
 });
 
-cancelBtn.on("click", function () {
-  const row = $(this).closest(".db_row");
+/* cancelBtn.on("click", function () { */
+
+$(document).on("click", ".cancel_btn", function () {
+  /* const row = $(this).closest(".db_row"); */
+
+  const row = $(this).closest("tr");
   const rowBtnEditGroup = row.find(".btn_edit");
 
-  $(".input_table").removeClass("inactive");
-  $(".input_list").removeClass("inactive");
+  if (row.attr("class") === "input_row") {
+    row.remove();
+  } else {
+    $(".input_table").removeClass("inactive");
+    $(".input_list").removeClass("inactive");
 
-  dbRow.each(function () {
-    if (!$(this).is(row)) {
-      $(this).removeClass("inactive");
-    }
-  });
+    dbRow.each(function () {
+      if (!$(this).is(row)) {
+        $(this).removeClass("inactive");
+      }
+    });
 
-  row.find("input").prop("disabled", true);
+    row.find("input").prop("disabled", true);
 
-  row.find(".datepicker").val(previousValueDate);
-  row.find(".item").val(previousValueItem);
-  row.find(".amount").val(previousValueAmount);
+    row.find(".datepicker").val(previousValueDate);
+    row.find(".item").val(previousValueItem);
+    row.find(".amount").val(previousValueAmount);
 
-  rowBtnEditGroup.children(".edit_btn").removeClass("hidden");
-  rowBtnEditGroup.children(".delete_btn").removeClass("hidden");
+    rowBtnEditGroup.children(".edit_btn").removeClass("hidden");
+    rowBtnEditGroup.children(".delete_btn").removeClass("hidden");
 
-  rowBtnEditGroup.children(".complete_btn").addClass("hidden");
-  rowBtnEditGroup.children(".cancel_btn").addClass("hidden");
+    rowBtnEditGroup.children(".complete_btn").addClass("hidden");
+    rowBtnEditGroup.children(".cancel_btn").addClass("hidden");
+  }
 });
 
 /********** module - addValue **********/
@@ -184,32 +220,29 @@ function addValue() {
 
     // 입력한 항목들을 입력 항목 아래로 추가
     let inputList = `
-      <tr> 
+      <tr class="input_row"> 
         <th scope="row" class="idx">
-          <input type="number" name="idx[]" value="${nextIdx}" disabled> 
+          <input type="number" name="idx[]" value="${nextIdx}"> 
         </th> 
         <td> 
-          <input type="text" id="datepicker" name="datepicker[]" value="${inputDate}"> 
+          <input type="text" class="datepicker" name="datepicker[]" value="${inputDate}"> 
         </td> 
-        <td> 
+        <td class="db_item"> 
           <input type="text" class="item" name="item[]" value="${inputItem}" autocomplete="off"> 
         </td> 
-        <td> 
+        <td class="db_amount"> 
           <input type="text" class="amount" name="amount[]" value="${inputAmount}" autocomplete="off"> 
         </td>
-        <td class="btn_edit btn"> 
-          <a class="edit_btn common_btn">
-            <img src="./asset/image/button/edit.svg" alt="edit_button">
-          </a>
-          <a href="./db/delete.php?idx=<?php echo $row['idx']; ?>" class="delete_btn common_btn">
-            <img src="./asset/image/button/delete.svg" alt="delete_button">
+        <td class="btn_edit"> 
+          <a class="edit_btn">
+            <img src="./asset/image/button/edit.svg" alt="edit_button" style="width: 10px">
           </a>
           
-          <button type="submit" class="complete_btn common_btn hidden"> 
+          <button type="submit" class="complete_btn hidden"> 
             <img src="./asset/image/button/complete.svg" alt="complete_button">
           </button>
-          <a class="cancel_btn common_btn hidden"> 
-            <img src="./asset/image/button/cancel.svg" alt="cancel_button">
+          <a class="cancel_btn"> 
+            <img src="./asset/image/button/cancel.svg" alt="cancel_button" style="width: 20px">
           </a>
         </td>
       </tr>`;
