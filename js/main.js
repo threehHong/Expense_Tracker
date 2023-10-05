@@ -108,15 +108,25 @@ inputTableTd.on("click", function () {
   }
 });
 
-/********** button **********/
-let addBtn = $(".add_btn");
-/* let input = $('.input tbody tr'); */
-let inputListTbody = $(".input_list tbody");
+/********** 추가 **********/
+const addBtn = $(".add_btn");
 let sum = 0;
 
 addBtn.on("click", () => {
   addValue();
 });
+
+/********** 저장 **********/
+const inputListTbody = $(".input_list tbody");
+
+function onSubmitCheck() {
+  if(inputListTbody.find("tr").length) {
+    return true;
+  } else {
+    alert("저장할 데이터가 없습니다");
+    return false;
+  }
+}
 
 /********** 수정 **********/
 const editBtn = $(".edit_btn");
