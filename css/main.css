@@ -102,7 +102,7 @@ input[type="number"] {
 .btn_edit {
   display: flex;
   /* flex-direction: column; */
-  height: 46px;
+  height: 46.5px;
 }
 
 button {
@@ -126,6 +126,8 @@ img {
 .edit_btn,
 .complete_btn {
   transform: translateX(-5px);
+  display: flex;
+  align-items: center;
 }
 
 .btn_edit img {
