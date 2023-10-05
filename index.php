@@ -103,7 +103,7 @@
               </tbody>
             </table>
   
-            <form action="./db/save.php" method="POST" class="input_list" onsubmit="onSubmit()">
+            <form action="./db/save.php" method="POST" class="input_list" onsubmit="return onSubmitCheck()">
   
               <div class="btn_wrap">
                 <button type="submit" class="save_btn"> 
