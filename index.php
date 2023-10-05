@@ -96,8 +96,8 @@
                   </td>
 
                   <td class="btn_edit"> 
-                    <a href="./db/delete.php?idx=<?php echo $row['idx']; ?>" class="delete_btn common_btn"> 삭제 </a>
-                    <a class="edit_btn common_btn"> 수정 </a>
+                    <a href="./db/delete.php?idx=<?php echo $row['idx']; ?>" class="delete_btn"> 삭제 </a>
+                    <a class="edit_btn"> 수정 </a>
                   </td>
                 </tr>
               </tbody>
@@ -106,13 +106,11 @@
             <form action="./db/save.php" method="POST" class="input_list" onsubmit="onSubmit()">
   
               <div class="btn_wrap">
-                <!-- <input type="button" class="add_btn common_btn" value="추가"> -->
-
-                <button type="submit" class="save_btn common_btn"> 
+                <button type="submit" class="save_btn"> 
                   <img src="./asset/image/button/save.svg" alt="save_button">
                 </button>
 
-                <img src="./asset/image/button/add.svg" class="add_btn common_btn" alt="add_button">
+                <img src="./asset/image/button/add.svg" class="add_btn" alt="add_button">
               </div>
   
               <table class="table">
@@ -129,7 +127,7 @@
               </table>
             </form>
 
-            <form action="./db/edit.php" method="POST" class="" onsubmit="onSubmit()">
+            <form action="./db/edit.php" method="POST" class="db_output" onsubmit="onSubmit()">
               <table class="table db">
                 <colgroup>
                   <col class="col1">
@@ -156,17 +154,17 @@
                         <input type="text" class="amount" name="amount[]" value="<?php echo number_format($row['amount']); ?>" autocomplete="off" disabled>
                       </td>
                       <td class="btn_edit"> 
-                        <a class="edit_btn common_btn">
+                        <a class="edit_btn">
                           <img src="./asset/image/button/edit.svg" alt="edit_button">
                         </a>
-                        <a href="./db/delete.php?idx=<?php echo $row['idx']; ?>" class="delete_btn common_btn">
+                        <a href="./db/delete.php?idx=<?php echo $row['idx']; ?>" class="delete_btn">
                           <img src="./asset/image/button/delete.svg" alt="delete_button">
                         </a>
                         
-                        <button type="submit" class="complete_btn common_btn hidden"> 
+                        <button type="submit" class="complete_btn hidden"> 
                           <img src="./asset/image/button/complete.svg" alt="complete_button">
                         </button>
-                        <a class="cancel_btn common_btn hidden"> 
+                        <a class="cancel_btn hidden"> 
                           <img src="./asset/image/button/cancel.svg" alt="cancel_button">
                         </a>
                       </td>
