@@ -65,8 +65,20 @@ input[type="number"] {
 
 .expenditure {
   height: 25px;
-  margin-bottom: 30px;
   font-size: 14px;
+}
+
+.expenditure p {
+  margin-bottom: 6px;
+}
+
+.excel {
+  text-align: end;
+  margin-right: 35px;
+}
+
+.excel img {
+  height: 20px;
 }
 
 .table.input {
