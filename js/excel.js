@@ -1,9 +1,28 @@
 /********** excel 파일 생성 **********/
-function createAndFillExcelWorkbook(labels, dataAmount) {
+function createAndFillExcelWorkbook(labels, dataAmount, dataGroups) {
   const workbook = new ExcelJS.Workbook();
   const sheet = workbook.addWorksheet("tab_1");
 
-  // 값 넣기
+  // item, amount 값을 엑셀의 각 셀에 삽입하는 로직
+  let j = 2;
+  for (let key in dataGroups) { 
+    sheet.getCell(2, `${j}`).value  = key;
+    sheet.getCell(2, `${j}`).alignment = {
+      vertical: "middle",
+      horizontal: "center",
+    };
+
+    $.each(dataGroups[key], function(i, item) {
+      sheet.getCell(`${i + 3 }`, `${j}`).value  = item;
+      sheet.getCell(`${i + 3 }`, `${j}`).alignment = {
+        vertical: "middle",
+        horizontal: "center",
+      };
+    })
+    j++;
+  }
+
+  /* // 값 넣기
   sheet.getCell("A2").value = 3.66;
   sheet.getCell(2, 4).value = "program";
   sheet.getCell("D3").value = "program";
@@ -39,15 +58,7 @@ function createAndFillExcelWorkbook(labels, dataAmount) {
     type: "pattern",
     pattern: "solid",
     fgColor: { argb: "D9D9D9" },
-  };
-
-  // chart에서 항목과 금액을 입력받아 저장한 변수 labels, dataAmount
-  $.each(labels, function (index, item) {
-    console.log(item);
-  });
-  $.each(dataAmount, function (index, item) {
-    console.log(item);
-  });
+  }; */
 
   return workbook;
 }
