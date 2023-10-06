@@ -66,7 +66,8 @@ const stackedBar = new Chart(ctx, config);
 $(".excel_btn").on("click", function () {
   const workbook = excelFunctions.createAndFillExcelWorkbook(
     labels,
-    dataAmount
+    dataAmount,
+    dataGroups
   );
   excelFunctions.download(workbook, "file_name").then((r) => {});
 });
