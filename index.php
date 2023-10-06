@@ -42,6 +42,9 @@
           <div class="chart-container">
             <canvas id="bar-chart"></canvas>
           </div>
+          <div style="text-align: center">
+            <button class="excel"> excel </button>
+          </div>
 
           <div class="board">
             <div class="expenditure">
@@ -176,9 +179,11 @@
 
           </div>
         </div>
-
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js" integrity="sha512-UnrKxsCMN9hFk7M56t4I4ckB4N/2HHi0w/7+B/1JsXIX3DmyBcsGpT3/BsuZMZf+6mAr0vP81syWtfynHJ69JA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src='https://cdn.jsdelivr.net/npm/chart.js'></script>
         <script src="js/main.js"> </script>
-        <script src="js/chart.js"> </script>
+        <script type='module' src="js/chart.js"> </script>
+        <script type='module' src="js/excel.js"> </script>
     </body>
 </html>
