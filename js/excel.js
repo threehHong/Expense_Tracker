@@ -41,6 +41,7 @@ function createAndFillExcelWorkbook(labels, dataAmount) {
     fgColor: { argb: "D9D9D9" },
   };
 
+  // chart에서 항목과 금액을 입력받아 저장한 변수 labels, dataAmount
   $.each(labels, function (index, item) {
     console.log(item);
   });
