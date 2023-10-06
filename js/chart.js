@@ -1,9 +1,12 @@
+import excelFunctions from "./excel.js";
+
+/********** chart **********/
 const labels = [];
 const dataAmount = [];
 const databaseRow = $(".table.db tr");
 const dataGroups = {};
 
-databaseRow.each((index, item) => {
+databaseRow.each((_, item) => {
   const dbRowItem = $(item).children(".db_item").find("input").val();
   const dbRowAmount = $(item)
     .children(".db_amount")
@@ -58,3 +61,12 @@ const config = {
 //
 let ctx = document.getElementById("bar-chart");
 const stackedBar = new Chart(ctx, config);
+
+/********** excel 파일 생성 및 다운로드 로직 **********/
+$(".excel").on("click", function () {
+  const workbook = excelFunctions.createAndFillExcelWorkbook(
+    labels,
+    dataAmount
+  );
+  excelFunctions.download(workbook, "file_name").then((r) => {});
+});
