@@ -63,7 +63,7 @@ let ctx = document.getElementById("bar-chart");
 const stackedBar = new Chart(ctx, config);
 
 /********** excel 파일 생성 및 다운로드 로직 **********/
-$(".excel").on("click", function () {
+$(".excel_btn").on("click", function () {
   const workbook = excelFunctions.createAndFillExcelWorkbook(
     labels,
     dataAmount
