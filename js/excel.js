@@ -4,61 +4,43 @@ function createAndFillExcelWorkbook(labels, dataAmount, dataGroups) {
   const sheet = workbook.addWorksheet("tab_1");
 
   // item, amount 값을 엑셀의 각 셀에 삽입하는 로직
-  let j = 2;
+  let column = 2;
   for (let key in dataGroups) { 
-    sheet.getCell(2, `${j}`).value  = key;
-    sheet.getCell(2, `${j}`).alignment = {
+    // 열 너비
+    if(key.length == 4) {
+      sheet.getColumn(column).width = 10;
+    } else if(key.length >= 5) {
+      sheet.getColumn(column).width = 12;
+    }
+
+    sheet.getCell(2, `${column}`).value  = key;
+    sheet.getCell(2, `${column}`).alignment = {
       vertical: "middle",
       horizontal: "center",
     };
+    sheet.getCell(2, `${column}`).font = {
+      bold: true,
+    }
 
-    $.each(dataGroups[key], function(i, item) {
-      sheet.getCell(`${i + 3 }`, `${j}`).value  = item;
-      sheet.getCell(`${i + 3 }`, `${j}`).alignment = {
+    $.each(dataGroups[key], function(row, item) {
+      sheet.getCell(`${row + 3 }`, `${column}`).value  = item;
+      sheet.getCell(`${row + 3 }`, `${column}`).alignment = {
         vertical: "middle",
         horizontal: "center",
       };
+
+      // 콤마 처리
+      sheet.getCell(`${row + 3 }`, `${column}`).numFmt = '#,##0';
+
+
+      // 열 너비
+      if(item.toString().length >= 8) {
+        sheet.getColumn(column).width = 10;
+      }
+
     })
-    j++;
+    column++;
   }
-
-  /* // 값 넣기
-  sheet.getCell("A2").value = 3.66;
-  sheet.getCell(2, 4).value = "program";
-  sheet.getCell("D3").value = "program";
-  sheet.getCell("D5").value = "merge";
-  sheet.getCell("B6").value = {
-    richText: [
-      {
-        text: "리치텍스트",
-        font: { size: 9, italic: true },
-      },
-    ],
-  };
-
-  // 셀 병합
-  sheet.mergeCells("C4 : D5");
-
-  // 정렬
-  sheet.getCell("A2").alignment = {
-    vertical: "middle",
-    horizontal: "center",
-  };
-
-  // 테두리
-  sheet.getCell("A2").border = {
-    top: { style: "medium", color: { argb: "DB576D" } },
-    left: { style: "medium", color: { argb: "DB576D" } },
-    bottom: { style: "medium", color: { argb: "DB576D" } },
-    right: { style: "medium", color: { argb: "DB576D" } },
-  };
-
-  // 배경색
-  sheet.getCell("A3").fill = {
-    type: "pattern",
-    pattern: "solid",
-    fgColor: { argb: "D9D9D9" },
-  }; */
 
   return workbook;
 }
