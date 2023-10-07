@@ -3,42 +3,60 @@ function createAndFillExcelWorkbook(labels, dataAmount, dataGroups) {
   const workbook = new ExcelJS.Workbook();
   const sheet = workbook.addWorksheet("tab_1");
 
-  // item, amount 값을 엑셀의 각 셀에 삽입하는 로직
+  // B1~Z1, B2~Z2 볼드, 가로 세로 중앙 정렬 처리
+  for (let col = 2; col <= 26; col++) {
+    // B1~Z1셀 볼드, 가로 세로 중앙 정렬 처리
+    const headerCell = sheet.getCell(String.fromCharCode(64 + col) + "1");
+    headerCell.font = { bold: true };
+    headerCell.alignment = { vertical: "middle", horizontal: "center" };
+
+    // B2~Z2셀 볼드, 가로 세로 중앙 정렬 처리
+    const dataCell = sheet.getCell(String.fromCharCode(64 + col) + "2");
+    dataCell.alignment = { vertical: "middle", horizontal: "center" };
+    dataCell.numFmt = "#,##0";
+  }
+
+  // 총 지출
+  const totalAmount = dataAmount.reduce((acc, cur) => acc + cur);
+  sheet.getCell(1, Object.keys(dataGroups).length + 3).value = "총 지출";
+  sheet.getCell(2, Object.keys(dataGroups).length + 3).value = totalAmount;
+
+  // 합계 Cell
+  const totalCell = sheet.getCell("A2");
+  totalCell.value = "합계";
+  totalCell.alignment = { vertical: "middle", horizontal: "center" };
+
   let column = 2;
-  for (let key in dataGroups) { 
+  for (let key in dataGroups) {
     // 열 너비
-    if(key.length == 4) {
+    if (key.length == 4) {
       sheet.getColumn(column).width = 10;
-    } else if(key.length >= 5) {
+    } else if (key.length >= 5) {
       sheet.getColumn(column).width = 12;
     }
 
-    sheet.getCell(2, `${column}`).value  = key;
-    sheet.getCell(2, `${column}`).alignment = {
-      vertical: "middle",
-      horizontal: "center",
-    };
-    sheet.getCell(2, `${column}`).font = {
-      bold: true,
-    }
+    let index = column - 2;
+    // 항목
+    sheet.getCell(1, `${column}`).value = key;
+    // 항목 별 합계
+    sheet.getCell(2, `${column}`).value = dataAmount[index];
 
-    $.each(dataGroups[key], function(row, item) {
-      sheet.getCell(`${row + 3 }`, `${column}`).value  = item;
-      sheet.getCell(`${row + 3 }`, `${column}`).alignment = {
+    // 각 항목
+    $.each(dataGroups[key], function (row, item) {
+      sheet.getCell(`${row + 4}`, `${column}`).value = item;
+      sheet.getCell(`${row + 4}`, `${column}`).alignment = {
         vertical: "middle",
         horizontal: "center",
       };
 
       // 콤마 처리
-      sheet.getCell(`${row + 3 }`, `${column}`).numFmt = '#,##0';
-
+      sheet.getCell(`${row + 4}`, `${column}`).numFmt = "#,##0";
 
       // 열 너비
-      if(item.toString().length >= 8) {
+      if (item.toString().length >= 8) {
         sheet.getColumn(column).width = 10;
       }
-
-    })
+    });
     column++;
   }
 
