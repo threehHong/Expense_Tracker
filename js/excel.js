@@ -2,6 +2,9 @@
 function createAndFillExcelWorkbook(labels, dataAmount, dataGroups) {
   const workbook = new ExcelJS.Workbook();
   const sheet = workbook.addWorksheet("tab_1");
+  const cell = function (row, column) {
+    return sheet.getCell(row, column);
+  };
 
   // B1~Z1, B2~Z2 볼드, 가로 세로 중앙 정렬 처리
   for (let col = 2; col <= 26; col++) {
@@ -21,10 +24,12 @@ function createAndFillExcelWorkbook(labels, dataAmount, dataGroups) {
   sheet.getCell(1, Object.keys(dataGroups).length + 3).value = "총 지출";
   sheet.getCell(2, Object.keys(dataGroups).length + 3).value = totalAmount;
 
-  // 합계 Cell
-  const totalCell = sheet.getCell("A2");
-  totalCell.value = "합계";
-  totalCell.alignment = { vertical: "middle", horizontal: "center" };
+  // 합계, 내역 Cell
+  cell("A2").value = "합계";
+  cell("A4").value = "내역";
+  for (let i = 2; i <= 4; i += 2) {
+    cell(`A${i}`).alignment = { vertical: "middle", horizontal: "center" };
+  }
 
   let column = 2;
   for (let key in dataGroups) {
