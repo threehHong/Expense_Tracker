@@ -21,8 +21,8 @@ function createAndFillExcelWorkbook(labels, dataAmount, dataGroups) {
 
   // 총 지출
   const totalAmount = dataAmount.reduce((acc, cur) => acc + cur);
-  sheet.getCell(1, Object.keys(dataGroups).length + 3).value = "총 지출";
-  sheet.getCell(2, Object.keys(dataGroups).length + 3).value = totalAmount;
+  cell(1, Object.keys(dataGroups).length + 3).value = "총 지출";
+  cell(2, Object.keys(dataGroups).length + 3).value = totalAmount;
 
   // 합계, 내역 Cell
   cell("A2").value = "합계";
@@ -42,14 +42,14 @@ function createAndFillExcelWorkbook(labels, dataAmount, dataGroups) {
 
     let index = column - 2;
     // 항목
-    sheet.getCell(1, `${column}`).value = key;
+    cell(1, `${column}`).value = key;
     // 항목 별 합계
-    sheet.getCell(2, `${column}`).value = dataAmount[index];
+    cell(2, `${column}`).value = dataAmount[index];
 
     // 각 항목
     $.each(dataGroups[key], function (row, item) {
-      sheet.getCell(`${row + 4}`, `${column}`).value = item;
-      sheet.getCell(`${row + 4}`, `${column}`).alignment = {
+      cell(`${row + 4}`, `${column}`).value = item;
+      cell(`${row + 4}`, `${column}`).alignment = {
         vertical: "middle",
         horizontal: "center",
       };
