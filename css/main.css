@@ -148,11 +148,11 @@ img {
 }
 
 .save_btn {
-  transform: translateY(-59px);
+  transform: translateY(-79px);
 }
 
 .add_btn {
-  transform: translateY(-5px);
+  transform: translateY(-23px);
 }
 
 .edit_btn,
@@ -169,7 +169,7 @@ img {
 /* chart */
 .chart-container {
   /* width: 400px; */
-  height: 250px;
+  height: 230px;
   border: 1px solid #ddd;
   padding: 10px;
   border-radius: 4px;
