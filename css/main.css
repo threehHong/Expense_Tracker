@@ -50,6 +50,26 @@ input[type="number"] {
   margin: 10px auto;
 }
 
+.board {
+  margin-bottom: 20px;
+}
+
+.date_range {
+  display: flex;
+}
+
+.start_date {
+  text-align: end;
+}
+
+.tilde {
+  margin: 0 5px;
+}
+
+.end_date {
+  text-align: start;
+}
+
 .input_table {
   margin: 0;
   transition: 0.3s;
@@ -128,11 +148,11 @@ img {
 }
 
 .save_btn {
-  transform: translateY(-85px);
+  transform: translateY(-59px);
 }
 
 .add_btn {
-  transform: translateY(-25px);
+  transform: translateY(-5px);
 }
 
 .edit_btn,
