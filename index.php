@@ -11,6 +11,22 @@
   }
 ?>
 
+<?php
+  $query = "SELECT * FROM expense_tracker_date_range";
+
+  $result = $conn->query($query);
+
+  if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $startDate = $row['start_date'];
+    $endDate = $row['end_date'];
+  } else {
+      // 데이터가 없는 경우 기본 값을 설정하거나 오류 처리
+      $startDate = "";
+      $endDate = "";
+  }
+?>
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -36,11 +52,16 @@
         <title> Expense Tracker </title>
     </head>
 
-
     <body>
         <div id="wrap">
           <div class="chart-container">
             <canvas id="bar-chart"></canvas>
+          </div>
+
+          <div class="date_range">
+            <input type="text" class="datepicker input_date start_date" name="date[]" autocomplete="off" required>
+            <span class="tilde"> ~ </span>
+            <input type="text" class="datepicker input_date end_date" name="date[]" autocomplete="off" required>
           </div>
 
           <div class="board">
@@ -188,5 +209,26 @@
         <script src="js/main.js"> </script>
         <script type='module' src="js/chart.js"> </script>
         <script type='module' src="js/excel.js"> </script>
+
+        <script>
+          let startDateFromDB = <?php echo json_encode($startDate); ?>;
+          let endDateFromDB = <?php echo json_encode($endDate); ?>;
+          
+          if(startDateFromDB) {
+            $(".datepicker.start_date").datepicker("setDate", startDateFromDB);
+            $(".datepicker.end_date").datepicker("setDate", endDateFromDB);
+          } else {
+            /* let twoMonthsAgo = new Date(today);
+            twoMonthsAgo.setMonth(today.getMonth() - 2);
+
+            // 날짜를 yyyy-mm-dd 형식으로 포맷
+            let formattedTwoMonthsAgo = twoMonthsAgo.getFullYear() + "-" + (twoMonthsAgo.getMonth() + 1).toString().padStart(2, '0') + "-" + twoMonthsAgo.getDate().toString().padStart(2, '0'); */
+
+            let formattedToday = $.datepicker.formatDate("yy-mm-dd", today);
+
+            $(".datepicker.start_date").datepicker("setDate", formattedToday);
+            $(".datepicker.end_date").datepicker("setDate", formattedToday);
+          }
+        </script>
     </body>
 </html>
