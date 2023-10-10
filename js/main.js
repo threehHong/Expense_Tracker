@@ -5,7 +5,10 @@ const amount = $(".amount");
 const inputListAmount = $(".input_list .amount");
 
 /********** 날짜 **********/
-let inputDate = null;
+let startDate;
+let endDate;
+
+let inputDate;
 let today = new Date();
 $(".datepicker").each(function () {
   $(this).datepicker({
@@ -13,6 +16,18 @@ $(".datepicker").each(function () {
 
     onSelect: function (date) {
       inputDate = date;
+
+      let thisElementClass = $(this).attr("class");
+
+      if (thisElementClass.includes("start_date")) {
+        startDate = inputDate;
+        console.log(startDate);
+        location.href = `./db/date_range.php?startDate=${startDate}`;
+      } else if (thisElementClass.includes("end_date")) {
+        endDate = inputDate;
+        location.href = `./db/date_range.php?endDate=${endDate}`;
+        console.log(endDate);
+      }
 
       console.log(inputDate);
     },
@@ -120,7 +135,7 @@ addBtn.on("click", () => {
 const inputListTbody = $(".input_list tbody");
 
 function onSubmitCheck() {
-  if(inputListTbody.find("tr").length) {
+  if (inputListTbody.find("tr").length) {
     return true;
   } else {
     alert("저장할 데이터가 없습니다");
