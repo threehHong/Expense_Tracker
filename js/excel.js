@@ -6,28 +6,33 @@ function createAndFillExcelWorkbook(labels, dataAmount, dataGroups) {
     return sheet.getCell(row, column);
   };
 
+  sheet.mergeCells("A1:C1");
+  cell("A1").value = startDateFromDB + " ~ " + endDateFromDB;
+  cell("A1").font = { bold: true };
+  cell("A1").alignment = { vertical: "middle", horizontal: "center" };
+
   // B1~Z1, B2~Z2 볼드, 가로 세로 중앙 정렬 처리
   for (let col = 2; col <= 26; col++) {
     // B1~Z1셀 볼드, 가로 세로 중앙 정렬 처리
-    const headerCell = sheet.getCell(String.fromCharCode(64 + col) + "1");
+    const headerCell = cell(String.fromCharCode(64 + col) + "3");
     headerCell.font = { bold: true };
     headerCell.alignment = { vertical: "middle", horizontal: "center" };
 
     // B2~Z2셀 볼드, 가로 세로 중앙 정렬 처리
-    const dataCell = sheet.getCell(String.fromCharCode(64 + col) + "2");
+    const dataCell = cell(String.fromCharCode(64 + col) + "4");
     dataCell.alignment = { vertical: "middle", horizontal: "center" };
     dataCell.numFmt = "#,##0";
   }
 
   // 총 지출
   const totalAmount = dataAmount.reduce((acc, cur) => acc + cur);
-  cell(1, Object.keys(dataGroups).length + 3).value = "총 지출";
-  cell(2, Object.keys(dataGroups).length + 3).value = totalAmount;
+  cell(3, Object.keys(dataGroups).length + 3).value = "총 지출";
+  cell(4, Object.keys(dataGroups).length + 3).value = totalAmount;
 
   // 합계, 내역 Cell
-  cell("A2").value = "합계";
-  cell("A4").value = "내역";
-  for (let i = 2; i <= 4; i += 2) {
+  cell("A4").value = "합계";
+  cell("A6").value = "내역";
+  for (let i = 4; i <= 6; i += 2) {
     cell(`A${i}`).alignment = { vertical: "middle", horizontal: "center" };
   }
 
@@ -42,20 +47,20 @@ function createAndFillExcelWorkbook(labels, dataAmount, dataGroups) {
 
     let index = column - 2;
     // 항목
-    cell(1, `${column}`).value = key;
+    cell(3, `${column}`).value = key;
     // 항목 별 합계
-    cell(2, `${column}`).value = dataAmount[index];
+    cell(4, `${column}`).value = dataAmount[index];
 
     // 각 항목
     $.each(dataGroups[key], function (row, item) {
-      cell(`${row + 4}`, `${column}`).value = item;
-      cell(`${row + 4}`, `${column}`).alignment = {
+      cell(`${row + 6}`, `${column}`).value = item;
+      cell(`${row + 6}`, `${column}`).alignment = {
         vertical: "middle",
         horizontal: "center",
       };
 
       // 콤마 처리
-      sheet.getCell(`${row + 4}`, `${column}`).numFmt = "#,##0";
+      cell(`${row + 6}`, `${column}`).numFmt = "#,##0";
 
       // 열 너비
       if (item.toString().length >= 8) {
