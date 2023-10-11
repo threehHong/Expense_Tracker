@@ -27,12 +27,19 @@ for (let key in dataGroups) {
   dataAmount.push(sum);
 }
 
+/* const dateRange =
+  startDateFromDB.split("-").splice(1, 2).join("-") +
+  " ~ " +
+  endDateFromDB.split("-").splice(1, 2).join("-"); */
+
+const selectedDateRange = startDateFromDB + " ~ " + endDateFromDB;
+
 //
 const data = {
   labels: labels,
   datasets: [
     {
-      label: "지출 내역",
+      label: "",
       data: dataAmount,
       backgroundColor: "rgba(255, 99, 132, 0.7)",
 
@@ -48,6 +55,10 @@ const config = {
   options: {
     maintainAspectRatio: false,
     plugins: {
+      title: {
+        display: false,
+        text: selectedDateRange,
+      },
       legend: {
         display: true,
         labels: {
@@ -69,5 +80,7 @@ $(".excel_btn").on("click", function () {
     dataAmount,
     dataGroups
   );
-  excelFunctions.download(workbook, "file_name").then((r) => {});
+  excelFunctions
+    .download(workbook, startDateFromDB + " ~ " + endDateFromDB)
+    .then((r) => {});
 });
