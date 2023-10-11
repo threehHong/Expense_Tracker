@@ -166,6 +166,10 @@ img {
   width: 15px;
 }
 
+.cancel_btn img {
+  transform: translateY(-1px);
+}
+
 /* chart */
 .chart-container {
   /* width: 400px; */
