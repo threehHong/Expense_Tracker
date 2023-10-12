@@ -42,8 +42,8 @@ const data = {
       label: "",
       data: dataAmount,
       backgroundColor: "rgba(255, 99, 132, 0.7)",
-
       borderWidth: 1,
+      borderRadius: 10,
     },
   ],
 };
