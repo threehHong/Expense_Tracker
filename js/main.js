@@ -63,10 +63,13 @@ inputDate = formattedToday;
 
 /********** 항목 **********/
 let inputItem = null;
-// item.blur(function (key) {
+
+$(document).on("input", ".item", function (key) {
+  $(this).val($(this).val().replace(" ", ""));
+});
+
 $(document).on("blur", ".item", function (key) {
   inputItem = $(this).val();
-  console.log(inputItem);
 });
 
 item.on("keyup", function (key) {
