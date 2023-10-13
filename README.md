@@ -31,7 +31,6 @@
 <details open>
     <summary> i. 입력한 데이터들중 같은 항목값들은 자동을 계산되어 그래프로 표시. </summary>
     <br>
-    <img src="asset/README/features1.png" width="400" />
     <img src="asset/README/features1.png" width="400px" />
     <br> <br>
 </details>
