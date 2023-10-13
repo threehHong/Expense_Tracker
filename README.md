@@ -1,20 +1,20 @@
-## Expense_Tracker
-
-### 프로젝트 소개
+## 프로젝트 소개
 
 지출 내역을 쉽고 간편하게 기록하고 관리하는 웹 애플리케이션
 
+[Expense Tracker ➡](http://mys.dothome.co.kr/expense/index.php) <br>
+
 <br>
 
-### 제작 정보
+## 제작 정보
 
 **제작 기간**
 
-- 23.08.04 ~
+23.08.04 ~
 
 **제작 형태**
 
-- 개인 프로젝트
+개인 프로젝트
 
 **기술 스택**
 
@@ -25,36 +25,40 @@
 
 <br>
 
-### 배포 주소
+## 주요 기능
 
-http://mys.dothome.co.kr/expense/index.php
+
+<details open>
+    <summary> i. 입력한 데이터들중 같은 항목값들은 자동을 계산되어 그래프로 표시. </summary>
+    <br>
+    <img src="asset/README/features1.png" width="500px" />
+    <img src="asset/README/features1.png" width="500px" />
+    <br> <br>
+</details>
+
+<br>
+
+<details open>
+    <summary> ii. 원하는 구간을 설정하면 해당 구간에 지출한 내역만 표시.</summary>
+    <br>
+    <img src="asset/README/features2-1.png" width="400px" height="350px"/> &nbsp;
+    <img src="asset/README/features2-2.png" width="400px" height="350px"/>
+    <br> <br>
+</details>
 
 <br>
 
-### 주요 기능
+<details open>
+    <summary> iii. 저장한 데이터를 Excel 파일로 다운. </summary>
+    <br>
+    지정한 구간에 있는 데이터만 엑셀에 정리. 
+    <br>  <br>
+    <img src="asset/README/features3-1.png" width="400px" height="350px" /> &nbsp;
+    <img src="asset/README/features3-2.png" width="400px" height="350px" />
+    <br> <br>
+</details>
 
-i. 입력한 데이터들중 같은 항목값들은 자동을 계산되어 그래프로 표시. <br>
-
-<img src="asset/README/features1.png" width="500px" />
-
-<br> <br>
-
-ii. 원하는 구간을 설정하면 해당 구간에 지출한 내역만 표시. <br>
-
-<div display="flex">
-    <img src="asset/README/features2-1.png" width="450px" height="350px"/> &nbsp;
-    <img src="asset/README/features2-2.png" width="450px" height="350px"/>
-</div>
-
-<br> <br>
-
-iii. 저장한 데이터를 Excel 파일로 다운. <br>
-&nbsp; &nbsp; 지정한 구간에 있는 데이터만 엑셀에 정리. <br>
-
-<img src="asset/README/features3-1.png" width="450px" height="350px" /> &nbsp;
-<img src="asset/README/features3-2.png" width="450px" height="350px" />
-
-<br>
+<br> 
 
 ### 추가 구현 계획
 
