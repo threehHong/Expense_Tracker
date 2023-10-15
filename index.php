@@ -123,7 +123,7 @@
                   <td>
                     <input type="text" class="amount" name="amount[]" autocomplete="off" required>
                   </td>
-
+                  
                   <td class="btn_edit"> 
                     <a href="./database/delete.php?idx=<?php echo $row['idx']; ?>" class="delete_btn"> 삭제 </a>
                     <a class="edit_btn"> 수정 </a>
@@ -186,7 +186,7 @@
                         <a class="edit_btn">
                           <img src="./assets/images/button/edit.svg" alt="edit_button">
                         </a>
-                        <a href="./db/delete.php?idx=<?php echo $row['idx']; ?>" class="delete_btn">
+                        <a href="./database/delete.php?idx=<?php echo $row['idx']; ?>" class="delete_btn">
                           <img src="./assets/images/button/delete.svg" alt="delete_button">
                         </a>
                         
