@@ -22,10 +22,10 @@ $(".datepicker").each(function () {
       if (thisElementClass.includes("start_date")) {
         startDate = inputDate;
         console.log(startDate);
-        location.href = `./db/date_range.php?startDate=${startDate}`;
+        location.href = `./database/date_range.php?startDate=${startDate}`;
       } else if (thisElementClass.includes("end_date")) {
         endDate = inputDate;
-        location.href = `./db/date_range.php?endDate=${endDate}`;
+        location.href = `./database/date_range.php?endDate=${endDate}`;
         console.log(endDate);
       }
 
