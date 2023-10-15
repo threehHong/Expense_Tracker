@@ -37,11 +37,11 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="stylesheet" href="css/common.css">
+        <link rel="stylesheet" href="./assets/css/common.css">
         
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 
-        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="./assets/css/main.css">
 
         <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 
@@ -84,9 +84,9 @@
             
             <div class="excel">
               <button class="excel_btn">
-                <img src="./asset/image/button/excel.svg" alt="excel_image">
+                <img src="./assets/images/button/excel.svg" alt="excel_image">
               </button>
-            </div>
+            </div>`
 
             <table class="table input_table">
               <colgroup>
@@ -125,21 +125,21 @@
                   </td>
 
                   <td class="btn_edit"> 
-                    <a href="./db/delete.php?idx=<?php echo $row['idx']; ?>" class="delete_btn"> 삭제 </a>
+                    <a href="./database/delete.php?idx=<?php echo $row['idx']; ?>" class="delete_btn"> 삭제 </a>
                     <a class="edit_btn"> 수정 </a>
                   </td>
                 </tr>
               </tbody>
             </table>
   
-            <form action="./db/save.php" method="POST" class="input_list" onsubmit="return onSubmitCheck()">
+            <form action="./database/save.php" method="POST" class="input_list" onsubmit="return onSubmitCheck()">
   
               <div class="btn_wrap">
                 <button type="submit" class="save_btn"> 
-                  <img src="./asset/image/button/save.svg" alt="save_button">
+                  <img src="./assets/images/button/save.svg" alt="save_button">
                 </button>
 
-                <img src="./asset/image/button/add.svg" class="add_btn" alt="add_button">
+                <img src="./assets/images/button/add.svg" class="add_btn" alt="add_button">
               </div>
   
               <table class="table">
@@ -156,7 +156,7 @@
               </table>
             </form>
 
-            <form action="./db/edit.php" method="POST" class="db_output" onsubmit="onSubmit()">
+            <form action="./database/edit.php" method="POST" class="db_output" onsubmit="onSubmit()">
               <table class="table db">
                 <colgroup>
                   <col class="col1">
@@ -184,17 +184,17 @@
                       </td>
                       <td class="btn_edit"> 
                         <a class="edit_btn">
-                          <img src="./asset/image/button/edit.svg" alt="edit_button">
+                          <img src="./assets/images/button/edit.svg" alt="edit_button">
                         </a>
                         <a href="./db/delete.php?idx=<?php echo $row['idx']; ?>" class="delete_btn">
-                          <img src="./asset/image/button/delete.svg" alt="delete_button">
+                          <img src="./assets/images/button/delete.svg" alt="delete_button">
                         </a>
                         
                         <button type="submit" class="complete_btn hidden"> 
-                          <img src="./asset/image/button/complete.svg" alt="complete_button">
+                          <img src="./assets/images/button/complete.svg" alt="complete_button">
                         </button>
                         <a class="cancel_btn hidden"> 
-                          <img src="./asset/image/button/cancel.svg" alt="cancel_button">
+                          <img src="./assets/images/button/cancel.svg" alt="cancel_button">
                         </a>
                       </td>
                     </tr>
@@ -208,9 +208,9 @@
         
         <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js" integrity="sha512-UnrKxsCMN9hFk7M56t4I4ckB4N/2HHi0w/7+B/1JsXIX3DmyBcsGpT3/BsuZMZf+6mAr0vP81syWtfynHJ69JA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src='https://cdn.jsdelivr.net/npm/chart.js'></script>
-        <script src="js/main.js"> </script>
-        <script type='module' src="js/chart.js"> </script>
-        <script type='module' src="js/excel.js"> </script>
+        <script src="./assets/js/main.js"> </script>
+        <script type='module' src="./assets/js/chart.js"> </script>
+        <script type='module' src="./assets/js/excel.js"> </script>
 
         <script>
           let startDateFromDB = <?php echo json_encode($startDate); ?>;
