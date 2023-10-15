@@ -27,11 +27,10 @@
 
 ## 주요 기능
 
-
 <details open>
     <summary> i. 입력한 데이터들중 같은 항목값들은 자동을 계산되어 그래프로 표시. </summary>
     <br>
-    <img src="asset/README/features1.png" width="400px" />
+    <img src="./assets/README/features1.png" width="400px" />
     <br> <br>
 </details>
 
@@ -40,8 +39,8 @@
 <details open>
     <summary> ii. 원하는 구간을 설정하면 해당 구간에 지출한 내역만 표시.</summary>
     <br>
-    <img src="asset/README/features2-1.png" width="400px" height="350px"/> &nbsp;
-    <img src="asset/README/features2-2.png" width="400px" height="350px"/>
+    <img src="./assets/README/features2-1.png" width="400px" height="350px"/> &nbsp;
+    <img src="./assets/README/features2-2.png" width="400px" height="350px"/>
     <br> <br>
 </details>
 
@@ -52,12 +51,12 @@
     <br>
     지정한 구간에 있는 데이터만 엑셀에 정리. 
     <br>  <br>
-    <img src="asset/README/features3-1.png" width="400px" height="350px" /> &nbsp;
-    <img src="asset/README/features3-2.png" width="400px" height="350px" />
+    <img src="./assets/README/features3-1.png" width="400px" height="350px" /> &nbsp;
+    <img src="./assets/README/features3-2.png" width="400px" height="350px" />
     <br> <br>
 </details>
 
-<br> 
+<br>
 
 ### 추가 구현 계획
 
