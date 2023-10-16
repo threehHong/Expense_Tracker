@@ -1,0 +1,78 @@
+#wrap {
+  width: 800px;
+  margin: 10px auto;
+}
+
+.form_wrap {
+  margin: 100px 150px;
+}
+
+form {
+  border: 1px solid #d9d9d9;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.form-floating {
+  margin-bottom: 20px;
+}
+
+.validation_message {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  color: red;
+  font-size: 12px;
+}
+
+.btn_sign_up_path {
+  text-align: end;
+}
+
+.btn_sign_up_path a {
+  display: inline-block;
+  text-decoration: none;
+  border-radius: 5px;
+  color: rgba(0, 0, 0, 0.8);
+  width: 90px;
+  line-height: 25px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.btn_sign_up_path a:hover {
+  color: rgba(0, 0, 0, 1);
+}
+
+.account {
+  text-align: center;
+}
+
+.account button {
+  width: 200px;
+}
+
+.validation_result {
+  text-align: center;
+  margin: 25px 0px 35px;
+}
+
+.validation_result p {
+  color: red;
+  font-weight: bold;
+}
+
+/* sign_up */
+.form-floating.email {
+  display: flex;
+  gap: 2px;
+}
+
+.form-floating.email button {
+  width: 100px;
+}
+
+.form-floating.email .validation_message {
+  right: 100px;
+}
