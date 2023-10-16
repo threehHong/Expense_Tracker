@@ -11,7 +11,7 @@
 
     <link rel="stylesheet" href="./assets/css/common.css">
 
-    <link rel="stylesheet" href="../assets/css/sign_in.css">
+    <link rel="stylesheet" href="../assets/css/account.css">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -35,7 +35,7 @@
           </div>
 
           <div class="btn_sign_up_path">
-            <a href=""> 회원가입 </a>
+            <a href="sign_up.php"> 회원가입 </a>
           </div>
 
           <div class="validation_result">
@@ -44,7 +44,7 @@
             </p>
           </div>
 
-          <div class="btn_sign_in">
+          <div class="account">
             <button type="submit" class="btn btn-primary"> 로그인 </button>
           </div>
         </form>
