@@ -1,3 +1,17 @@
+<br>
+<br>
+<div align="center">
+    <img src="assets/images/logo/logo.svg" style="width: 300px; min-width: 140px;">
+</div>
+
+<br>
+
+<div align="center">
+    <h3> Expense Tracker</h3>
+    <p>  지출 내역을 쉽고 간편하게 기록하고 </p>
+    <p> 관리하는 웹 애플리케이션 </p>
+</div>
+
 ## 프로젝트 소개
 
 지출 내역을 쉽고 간편하게 기록하고 관리하는 웹 애플리케이션
