@@ -9,6 +9,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- favicon -->
+    <link rel="shortcut icon" href="../assets/images/logo/favicon.svg" type="image/x-icon">
+
     <link rel="stylesheet" href="./assets/css/common.css">
 
     <link rel="stylesheet" href="../assets/css/account.css">
@@ -25,6 +28,12 @@
     <div id="wrap">
       <div class="form_wrap">
         <form action="">
+          <div class="logo">
+            <a href="../index.php">
+              <img src="../assets/images/logo/Logo.svg" alt="Logo">
+            </a>
+          </div>
+
           <div class="form-floating mb-3">
             <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
             <label for="floatingInput">ID</label>
@@ -55,7 +64,7 @@
             <label for="floatingPassword">인증 코드</label>
           </div>
 
-          <div class="account">
+          <div class="btn_account sign_up">
             <button type="submit" class="btn btn-primary"> 회원가입 </button>
           </div>
         </form>
