@@ -1,7 +1,7 @@
 <br>
 <br>
 <div align="center">
-    <img src="assets/images/logo/logo.svg" style="width: 300px; min-width: 140px;">
+    <img src="./assets/images/logo/Logo.svg" style="width: 280px; min-width: 140px;">
 </div>
 
 <br>
@@ -11,6 +11,8 @@
     <p>  지출 내역을 쉽고 간편하게 기록하고 </p>
     <p> 관리하는 웹 애플리케이션 </p>
 </div>
+
+<br>
 
 ## 프로젝트 소개
 
