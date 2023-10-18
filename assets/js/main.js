@@ -263,14 +263,14 @@ function addValue() {
         </td>
         <td class="btn_edit"> 
           <a class="edit_btn">
-            <img src="./asset/image/button/edit.svg" alt="edit_button" style="width: 10px">
+            <img src="./assets/images/button/edit.svg" alt="edit_button" style="width: 10px">
           </a>
           
           <button type="submit" class="complete_btn hidden"> 
-            <img src="./asset/image/button/complete.svg" alt="complete_button">
+            <img src="./assets/images/button/complete.svg" alt="complete_button">
           </button>
           <a class="cancel_btn"> 
-            <img src="./asset/image/button/cancel.svg" alt="cancel_button" style="width: 20px">
+            <img src="./assets/images/button/cancel.svg" alt="cancel_button" style="width: 20px">
           </a>
         </td>
       </tr>`;
