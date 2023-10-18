@@ -16,7 +16,7 @@
 
       /* echo $date." ".$item." ".$amount. "<br>"; */
 
-      $query = "INSERT INTO Expense_Tracker (date, item, amount) VALUES ('$date', '$item', '$amount')";
+      $query = "INSERT INTO expense_tracker (date, item, amount) VALUES ('$date', '$item', '$amount')";
       
       global $conn;
       

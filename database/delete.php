@@ -3,7 +3,7 @@
 
   $idx = $_GET['idx'];
 
-  $query = "DELETE from Expense_Tracker where idx='".$idx."' ";
+  $query = "DELETE from expense_tracker where idx='".$idx."' ";
  
   global $conn;
 
@@ -12,13 +12,13 @@
   }
 
   // AUTO_INCREMENT 초기화
-  $query_reset_auto_increment = "ALTER TABLE Expense_Tracker AUTO_INCREMENT = 1";
+  $query_reset_auto_increment = "ALTER TABLE expense_tracker AUTO_INCREMENT = 1";
   $conn->query($query_reset_auto_increment);
 
   // idx 값 업데이트
   $query_update_idx = "SET @COUNT = 0";
   $conn->query($query_update_idx);
-  $query_update_idx = "UPDATE Expense_Tracker SET idx = @COUNT:=@COUNT+1";
+  $query_update_idx = "UPDATE expense_tracker SET idx = @COUNT:=@COUNT+1";
   $conn->query($query_update_idx);
 
   echo "<script>

@@ -1,7 +1,7 @@
 <?php
   include "config/db_connect.php";
 
-  /* $query = "SELECT * FROM Expense_Tracker ORDER BY idx DESC"; */
+  /* $query = "SELECT * FROM expense_tracker ORDER BY idx DESC"; */
 
   $query = "SELECT * FROM expense_tracker WHERE date BETWEEN(SELECT start_date FROM expense_tracker_date_range WHERE idx = 1) AND (SELECT end_date FROM expense_tracker_date_range WHERE idx = 1) ORDER BY idx DESC";
 
