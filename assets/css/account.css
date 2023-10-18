@@ -4,7 +4,7 @@
 }
 
 .form_wrap {
-  margin: 80px 150px;
+  margin: 80px 150px 20px;
 }
 
 form {
@@ -13,7 +13,7 @@ form {
   border-radius: 10px;
 }
 
-.logo {
+.form_wrap .logo {
   text-align: center;
   margin: 20px 0 35px;
 }
