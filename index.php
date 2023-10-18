@@ -59,6 +59,24 @@
 
   <body>
     <div id="wrap">
+      <header>
+        <h1>
+          <a href="index.php" class="logo">
+            <img src="assets/images/logo/Logo.svg" alt="">
+          </a>
+        </h1>
+
+        <nav>
+          <ul>
+            <li>
+              <a href="./subpages/sign_in.php" class="account">
+                로그인 / 회원가입
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
       <div class="chart-container">
         <canvas id="bar-chart"></canvas>
       </div>
