@@ -29,7 +29,7 @@ include "../config/db_connect.php";
 <body>
   <div id="wrap">
     <div class="form_wrap">
-      <form action="">
+      <form action="../database/account/sign_up_validation.php" method="POST" onsubmit="onSubmitCheck(event)">
         <div class="logo">
           <a href="../index.php">
             <img src="../assets/images/logo/Logo.svg" alt="Logo">
@@ -37,19 +37,19 @@ include "../config/db_connect.php";
         </div>
 
         <div class="form-floating mb-3">
-          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+          <input type="id" name="id" class="form-control signup_id" id="floatingInput" placeholder="name@example.com">
           <label for="floatingInput">ID</label>
           <div class="validation_message"> validation message </div>
         </div>
 
         <div class="form-floating">
-          <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+          <input type="password" name="password" class="form-control signup_password" id="floatingPassword" placeholder="Password">
           <label for="floatingPassword">Password</label>
           <div class="validation_message"> validation message </div>
         </div>
 
         <div class="form-floating">
-          <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+          <input type="password" class="form-control signup_password_check" id="floatingPassword" placeholder="Password">
           <label for="floatingPassword">Password Check</label>
           <div class="validation_message"> validation message </div>
         </div>
@@ -62,7 +62,7 @@ include "../config/db_connect.php";
         </div>
 
         <div class="form-floating">
-          <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+          <input type="text" class="form-control" id="floatingPassword" placeholder="Password">
           <label for="floatingPassword">인증 코드</label>
         </div>
 
@@ -72,6 +72,56 @@ include "../config/db_connect.php";
       </form>
     </div>
   </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    function onSubmitCheck(e) {
+
+      /* e.preventDefault();
+
+      const signupIdInput = $(".signup_id").val();
+      const signupPasswordInput = $(".signup_password").val();
+      const signupPasswordInputCheck = $(".signup_password_check").val();
+
+      console.log(signupIdInput, signupPasswordInput, signupPasswordInputCheck) */
+
+      /* validateId(signinIdInput, signinPasswordInput); */
+
+      /* 
+      밑에와 같은 방식으로 리팩토링 하기.
+      if (!validateForm()) e.preventDefault();
+      console.log("출력 확인"); 
+      */
+
+    }
+
+    /* function validateId(signinIdInput, signinPasswordInput) {
+      $.ajax({
+        type: 'post',
+        url: '../database/account/sign_in_validation.php',
+        data: {
+          signinIdInput: signinIdInput,
+          signinPasswordInput,
+          signinPasswordInput
+        },
+        dataType: 'json',
+        error: function() {
+          console.log('error');
+        },
+        success: function(response) {
+
+          console.log(response);
+
+          if (response.signin_message === "로그인 성공") {
+            location.href = '../index.php';
+          } else {
+            $(".validation_result p").html(response.signin_message);
+          }
+
+        }
+      })
+    } */
+  </script>
 </body>
 
 </html>
