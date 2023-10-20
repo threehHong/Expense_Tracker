@@ -37,11 +37,11 @@ include "../config/db_connect.php";
         </div>
 
         <div class="form-floating mb-3">
-          <input type="id" class="form-control id" id="floatingInput" placeholder="name@example.com">
+          <input type="id" class="form-control signin_id" id="floatingInput" placeholder="name@example.com">
           <label for="floatingInput">ID</label>
         </div>
         <div class="form-floating">
-          <input type="password" class="form-control password" id="floatingPassword" placeholder="Password">
+          <input type="password" class="form-control signin_password" id="floatingPassword" placeholder="Password">
           <label for="floatingPassword">Password</label>
         </div>
 
@@ -50,9 +50,7 @@ include "../config/db_connect.php";
         </div>
 
         <div class="validation_result">
-          <p>
-            유효성 검사 결과 표시
-          </p>
+          <p> </p>
         </div>
 
         <div class="btn_account sign_in">
@@ -66,9 +64,47 @@ include "../config/db_connect.php";
   <script>
     function onSubmitCheck(e) {
 
-      /* if (!validateForm()) e.preventDefault();
-      console.log("출력 확인"); */
+      e.preventDefault();
 
+      const signinIdInput = $(".signin_id").val();
+      const signinPasswordInput = $(".signin_password").val();
+
+      console.log(signinIdInput, signinPasswordInput)
+
+      validateId(signinIdInput, signinPasswordInput);
+
+      /* 
+      밑에와 같은 방식으로 리팩토링 하기.
+      if (!validateForm()) e.preventDefault();
+      console.log("출력 확인"); 
+      */
+
+    }
+
+    function validateId(signinIdInput, signinPasswordInput) {
+      $.ajax({
+        type: 'post',
+        url: '../database/account/sign_in_validation.php',
+        data: {
+          signinIdInput: signinIdInput,
+          signinPasswordInput: signinPasswordInput
+        },
+        dataType: 'json',
+        error: function() {
+          console.log('error');
+        },
+        success: function(response) {
+
+          console.log(response);
+
+          if (response.signin_message === "로그인 성공") {
+            location.href = '../index.php';
+          } else {
+            $(".validation_result p").html(response.signin_message);
+          }
+
+        }
+      })
     }
   </script>
 </body>
