@@ -69,16 +69,7 @@ include "../config/db_connect.php";
       const signinIdInput = $(".signin_id").val();
       const signinPasswordInput = $(".signin_password").val();
 
-      console.log(signinIdInput, signinPasswordInput)
-
       validateId(signinIdInput, signinPasswordInput);
-
-      /* 
-      밑에와 같은 방식으로 리팩토링 하기.
-      if (!validateForm()) e.preventDefault();
-      console.log("출력 확인"); 
-      */
-
     }
 
     function validateId(signinIdInput, signinPasswordInput) {
@@ -94,8 +85,6 @@ include "../config/db_connect.php";
           console.log('error');
         },
         success: function(response) {
-
-          console.log(response);
 
           if (response.signin_message === "로그인 성공") {
             location.href = '../index.php';
