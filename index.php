@@ -1,6 +1,11 @@
 <?php
 include "config/db_connect.php";
 
+session_start();
+
+// 로그인 했을 때 $_SESSION['ID']에 저장한 user ID
+$user_id = $_SESSION['ID'];
+
 /* $query = "SELECT * FROM expense_tracker ORDER BY idx DESC"; */
 
 $query = "SELECT * FROM expense_tracker WHERE date BETWEEN(SELECT start_date FROM expense_tracker_date_range WHERE idx = 1) AND (SELECT end_date FROM expense_tracker_date_range WHERE idx = 1) ORDER BY idx DESC";
