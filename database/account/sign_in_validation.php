@@ -9,9 +9,9 @@ $user_pw = hash('sha512', $user_pw);
 
 $sql = "SELECT * from expense_tracker_member where id='{$user_id}' and password='{$user_pw}'";
 $result = $conn->query($sql);
-$row = $result->fetch_object();
 
-if ($row) {
+if ($result->num_rows > 0) {
+  $row = $result->fetch_object();
   $response['signin_message'] = '로그인 성공';
   $_SESSION['ID'] = $row->id;
 } else {
