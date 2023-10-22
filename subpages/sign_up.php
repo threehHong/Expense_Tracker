@@ -64,10 +64,11 @@ include "../config/db_connect.php";
         <div class="form-floating verification_code">
           <input type="text" class="form-control" id="floatingPassword" placeholder="Password">
           <label for="floatingPassword">인증 코드</label>
+          <div class="validation_message"></div>
         </div>
 
         <div class="btn_account sign_up">
-          <button type="submit" class="btn btn-primary"> 회원가입 </button>
+          <button type="submit" class="btn btn-primary" disabled> 회원가입 </button>
         </div>
       </form>
     </div>
@@ -81,45 +82,87 @@ include "../config/db_connect.php";
     const emailInput = $(".signup_email");
     const emailVerifyBtn = $(".signup_email_verify_btn");
     const emailVerificationCode = $(".verification_code");
+    const emailVerificationCodeInput = $(".verification_code input");
 
     const idRegEx = /^[a-zA-Z0-9]{6,}$/
     const passwordRegEx = /^.{6,}$/;
     const emailRegEx = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-    signupIdInput.on("blur", function() {
-      if (!idRegEx.test(signupIdInput.val())) {
-        signupIdInput.siblings('.validation_message').text('6자 이상 문자나 숫자를 입력하세요');
+    let isIdValid = false;
+    let isPasswordValid = false;
+    let isPasswordCheckValid = false;
+    let isEmailValid = false;
+    let isVerificationCodeValid = false;
+
+    signupIdInput.on("input", function() {
+      if (!idRegEx.test($(this).val())) {
+        $(this).siblings('.validation_message').text('6자 이상 문자나 숫자를 입력하세요');
       } else {
-        signupIdInput.siblings('.validation_message').text('');
+        $(this).siblings('.validation_message').text('');
+        isIdValid = true;
+        checkAllValid()
       }
     });
 
-    signupPasswordInput.on("blur", function() {
-      if (!passwordRegEx.test(signupPasswordInput.val())) {
-        signupPasswordInput.siblings('.validation_message').text('6자 이상 입력하세요');
+    signupIdInput.on("input", function() {
+      let signupIdInputValue = $(this).val();
+
+      $.ajax({
+        type: 'post',
+        url: '../database/account/sign_up_validation.php',
+        data: {
+          signupIdInputValue: signupIdInputValue,
+        },
+        dataType: 'json',
+        error: function() {
+          console.log('error');
+        },
+        success: function(response) {
+          if (response.user_id_check) {
+            signupIdInput.siblings('.validation_message').text('중복된 아이디 입니다.');
+          } else {
+            /* signupIdInput.siblings('.validation_message').text(''); */
+            isIdValid = true;
+            checkAllValid()
+          }
+        }
+      });
+    });
+
+    signupPasswordInput.on("input", function() {
+      if (!passwordRegEx.test($(this).val())) {
+        $(this).siblings('.validation_message').text('6자 이상 입력하세요');
       } else {
-        signupPasswordInput.siblings('.validation_message').text('');
+        $(this).siblings('.validation_message').text('');
+        isPasswordValid = true;
+        checkAllValid()
       }
     });
 
-    signupPasswordInputCheck.on("blur", function() {
-      if (signupPasswordInput.val() !== signupPasswordInputCheck.val()) {
-        signupPasswordInputCheck.siblings('.validation_message').text('비밀번호 불일치');
+    signupPasswordInputCheck.on("input", function() {
+      if (signupPasswordInput.val() !== $(this).val()) {
+        $(this).siblings('.validation_message').text('비밀번호 불일치');
       } else {
-        signupPasswordInputCheck.siblings('.validation_message').text('');
+        $(this).siblings('.validation_message').text('');
+        isPasswordCheckValid = true;
+        checkAllValid()
       }
     });
 
-    emailInput.on("blur", function() {
-      if (!emailRegEx.test(emailInput.val())) {
-        emailInput.siblings('.validation_message').text('이메일 형식 불일치');
+    emailInput.on("input", function() {
+      if (!emailRegEx.test($(this).val())) {
+        $(this).siblings('.validation_message').text('이메일 형식 불일치');
       } else {
-        emailInput.siblings('.validation_message').text('');
+        $(this).siblings('.validation_message').text('');
+        isEmailValid = true;
+        checkAllValid()
       }
     });
 
     emailVerifyBtn.on("click", function() {
-      if (emailRegEx.test(emailInput.val())) {
+      if (!emailInput.val()) {
+        emailInput.siblings('.validation_message').text('이메일을 입력하세요');
+      } else if (emailRegEx.test(emailInput.val())) {
         console.log("출력 확인")
         /* emailVerifyBtn.prop("disabled", true); */
         emailVerificationCode.css({
@@ -127,11 +170,28 @@ include "../config/db_connect.php";
           "opacity": "1",
           "transition": "1s",
         });
+        isEmailValid = true;
+        checkAllValid()
       }
-      /* else {
-             emailInput.siblings('.validation_message').text('');
-           } */
     })
+
+    emailVerificationCodeInput.on("input", function() {
+      if (emailVerificationCodeInput.val()) {
+        isVerificationCodeValid = true;
+        checkAllValid()
+      }
+    })
+
+    function checkAllValid() {
+      if (isIdValid && isPasswordValid && isPasswordCheckValid && isEmailValid && isVerificationCodeValid) {
+        $(".sign_up .btn").removeAttr("disabled");
+        $(".sign_up .btn").css({
+          "opacity": "1",
+          "transition": "1s",
+        });
+      }
+    }
+
 
     function onSubmitCheck(e) {
 
@@ -148,32 +208,6 @@ include "../config/db_connect.php";
       console.log("출력 확인"); 
       */
 
-    }
-
-    function validateId(signupIdInput, signinPasswordInput) {
-      $.ajax({
-        type: 'post',
-        url: '../database/account/sign_up_validation.php',
-        data: {
-          signinIdInput: signinIdInput,
-          signupPasswordInput: signupPasswordInput
-        },
-        dataType: 'json',
-        error: function() {
-          console.log('error');
-        },
-        success: function(response) {
-
-          console.log(response);
-
-          if (response.signin_message === "로그인 성공") {
-            location.href = '../index.php';
-          } else {
-            $(".validation_result p").html(response.signin_message);
-          }
-
-        }
-      })
     }
   </script>
 </body>
