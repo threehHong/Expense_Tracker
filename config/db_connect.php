@@ -1,9 +1,11 @@
 <?php
 
+require 'config.php';
+
 $servername = "localhost";
-$username = "root";
-$password = "";
-$database = "mys";
+$username = $config['db_username_dev'];
+$password = $config['db_password_dev'];
+$database = $config['db_database_dev'];
 
 $conn = new mysqli($servername, $username, $password, $database);
 
