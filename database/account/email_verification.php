@@ -5,10 +5,9 @@ use PHPMailer\PHPMailer\Exception;
 
 require '../../vendor/autoload.php';
 
-if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["action"]) && $_POST["action"] === "verifyEmail") {
-	$result = requestEmailVerification("emailAdrress");
-
-	echo json_encode($result);
+if (isset($_POST["action"])) {
+	$response['verification_code'] = requestEmailVerification($_POST["action"]);
+	echo json_encode($response);
 }
 
 function requestEmailVerification($user_email)
