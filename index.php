@@ -4,7 +4,7 @@ include "config/db_connect.php";
 session_start();
 
 // 로그인 했을 때 $_SESSION['ID']에 저장한 user ID
-$user_id = $_SESSION['ID'];
+/* $user_id = $_SESSION['ID']; */
 
 /* $query = "SELECT * FROM expense_tracker ORDER BY idx DESC"; */
 
