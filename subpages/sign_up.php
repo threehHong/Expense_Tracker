@@ -29,7 +29,7 @@ include "../config/db_connect.php";
 <body>
   <div id="wrap">
     <div class="form_wrap">
-      <form action="../database/account/sign_up_db.php" id="sign_up" method="POST">
+      <form action="../database/account/sign_up_db.php" id="sign_up" method="POST" onsubmit="submitSigninForm(event)">
         <div class="logo">
           <a href="../index.php">
             <img src="../assets/images/logo/Logo.svg" alt="Logo">
@@ -227,6 +227,12 @@ include "../config/db_connect.php";
           "opacity": "0.5",
           "transition": "1s",
         });
+      }
+    }
+
+    function submitSigninForm(e) {
+      if (!(isIdValid && isPasswordValid && isPasswordCheckValid && isEmailValid && isVerificationCodeValid)) {
+        e.preventDefault();
       }
     }
   </script>
