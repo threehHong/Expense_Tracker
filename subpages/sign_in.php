@@ -75,7 +75,7 @@ include "../config/db_connect.php";
     function validateId(signinIdInput, signinPasswordInput) {
       $.ajax({
         type: 'post',
-        url: '../database/account/sign_in_validation.php',
+        url: '../database/account/sign_in_db.php',
         data: {
           signinIdInput: signinIdInput,
           signinPasswordInput: signinPasswordInput
