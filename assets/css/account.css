@@ -90,3 +90,14 @@ form {
 .btn_account.sign_up {
   margin: 50px 0 25px;
 }
+
+.verification_code {
+  display: none;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.sign_up .btn {
+  opacity: 0.5;
+  transition: 1s;
+}
