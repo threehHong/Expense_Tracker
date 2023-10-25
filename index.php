@@ -209,8 +209,13 @@ if ($result->num_rows > 0) {
             foreach ($data as $row) {
             ?>
               <tr class="db_row">
+                <!-- 실제 DB에서 각 row의 Index 번호값을 출력하는 Column(화면에 보이지 않음, 수정 기능을 위한 태그) -->
+                <th scope="row" class="idx_db" style="display: none;">
+                  <input type="number" name="idx[]" value="<?php echo $row['idx']; ?>" disabled>
+                </th>
+
                 <th scope="row" class="idx">
-                  <input type="number" name="idx[]" value="<?php echo $row['row_num']; ?>" disabled>
+                  <input type="number" value="<?php echo $row['row_num']; ?>" disabled>
                 </th>
                 <td>
                   <input type="text" class="datepicker" name="date[]" value="<?php echo $row['date']; ?>" disabled>
