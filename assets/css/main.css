@@ -79,6 +79,24 @@ header nav .account:hover {
 
 header .account {
   font-size: 13px;
+  cursor: pointer;
+}
+
+nav ul {
+  display: flex;
+}
+
+nav .user_id {
+  display: flex;
+  align-items: center;
+}
+
+nav .log_out_btn {
+  margin-left: 5px;
+}
+
+nav .log_out_btn img {
+  width: 15px;
 }
 
 .board {
