@@ -3,12 +3,13 @@ include "config/db_connect.php";
 
 session_start();
 
-// 로그인 했을 때 $_SESSION['ID']에 저장한 user ID
-/* $user_id = $_SESSION['ID']; */
-
-/* $query = "SELECT * FROM expense_tracker ORDER BY idx DESC"; */
-
-$query = "SELECT * FROM expense_tracker WHERE date BETWEEN(SELECT start_date FROM expense_tracker_date_range WHERE idx = 1) AND (SELECT end_date FROM expense_tracker_date_range WHERE idx = 1) ORDER BY idx DESC";
+/* 복잡한 SQL문 대신 자바스크립트로 넘버링 생각할 수 있을듯 */
+if (!isset($_SESSION['ID'])) {
+  $query = "SELECT (SELECT COUNT(*) FROM expense_tracker e2 WHERE e2.user_id IS NULL AND e2.date BETWEEN (SELECT start_date FROM expense_tracker_date_range WHERE idx = 1) AND (SELECT end_date FROM expense_tracker_date_range WHERE idx = 1) AND e2.idx <= e.idx) AS row_num, e.* FROM expense_tracker e WHERE e.user_id IS NULL AND e.date BETWEEN (SELECT start_date FROM expense_tracker_date_range WHERE idx = 1) AND (SELECT end_date FROM expense_tracker_date_range WHERE idx = 1) ORDER BY e.idx DESC;";
+} else {
+  $user_id = $_SESSION['ID'];
+  $query = "SELECT (SELECT COUNT(*) FROM expense_tracker e2 WHERE user_id='{$user_id}' AND e2.date BETWEEN (SELECT start_date FROM expense_tracker_date_range WHERE idx = 1) AND (SELECT end_date FROM expense_tracker_date_range WHERE idx = 1) AND e2.idx <= e.idx) AS row_num, e.* FROM expense_tracker e WHERE user_id='{$user_id}' AND e.date BETWEEN (SELECT start_date FROM expense_tracker_date_range WHERE idx = 1) AND (SELECT end_date FROM expense_tracker_date_range WHERE idx = 1) ORDER BY row_num DESC;";
+}
 
 $result = $conn->query($query);
 
@@ -74,11 +75,22 @@ if ($result->num_rows > 0) {
 
       <nav>
         <ul>
-          <li>
-            <a href="./subpages/sign_in.php" class="account">
-              로그인 / 회원가입
-            </a>
-          </li>
+          <?php if (!isset($_SESSION['ID'])) { ?>
+            <li>
+              <a href="./subpages/sign_in.php" class="account">
+                로그인 / 회원가입
+              </a>
+            </li>
+          <?php } else { ?>
+            <li class="account user_id">
+              <?php echo $user_id ?>
+            </li>
+            <li class="log_out_btn">
+              <a href="subpages/log_out.php">
+                <img src="assets/images/button/log_out.svg" alt="log_out_button">
+              </a>
+            </li>
+          <?php } ?>
         </ul>
       </nav>
     </header>
@@ -198,7 +210,7 @@ if ($result->num_rows > 0) {
             ?>
               <tr class="db_row">
                 <th scope="row" class="idx">
-                  <input type="number" name="idx[]" value="<?php echo $row['idx']; ?>" disabled>
+                  <input type="number" name="idx[]" value="<?php echo $row['row_num']; ?>" disabled>
                 </th>
                 <td>
                   <input type="text" class="datepicker" name="date[]" value="<?php echo $row['date']; ?>" disabled>
