@@ -1,6 +1,8 @@
 <?php
 include "../config/db_connect.php";
 
+session_start();
+
 if (isset($_POST['datepicker']) && isset($_POST['item']) && isset($_POST['amount'])) {
   $dates = $_POST['datepicker'];
   $items = $_POST['item'];
@@ -16,7 +18,12 @@ if (isset($_POST['datepicker']) && isset($_POST['item']) && isset($_POST['amount
 
     /* echo $date." ".$item." ".$amount. "<br>"; */
 
-    $query = "INSERT INTO expense_tracker (date, item, amount) VALUES ('$date', '$item', '$amount')";
+    if (!isset($_SESSION['ID'])) {
+      $query = "INSERT INTO expense_tracker (date, item, amount) VALUES ('$date', '$item', '$amount')";
+    } else {
+      $user_id = $_SESSION['ID'];
+      $query = "INSERT INTO expense_tracker (date, item, amount, user_id) VALUES ('$date', '$item', '$amount', '$user_id')";
+    }
 
     global $conn;
 
