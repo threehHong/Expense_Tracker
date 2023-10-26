@@ -10,9 +10,12 @@ $sql = "INSERT INTO expense_tracker_member (id, password, email) VALUES ('{$user
 
 /* if (strlen($user_id) > 0) { */
 if ($conn->query($sql) === true) {
-  echo "<script> 
+  $sql = "INSERT INTO expense_tracker_date_range (user_id) VALUES ('{$user_id}')";
+  if ($conn->query($sql) === true) {
+    echo "<script> 
             location.href = '../../index.php'; 
           </script>";
+  }
 } else {
   echo "<script>
             alert('회원가입 실패');
