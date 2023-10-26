@@ -3,12 +3,11 @@ include "config/db_connect.php";
 
 session_start();
 
-/* 복잡한 SQL문 대신 자바스크립트로 넘버링 생각할 수 있을듯 */
-if (!isset($_SESSION['ID'])) {
-  $query = "SELECT (SELECT COUNT(*) FROM expense_tracker e2 WHERE e2.user_id IS NULL AND e2.date BETWEEN (SELECT start_date FROM expense_tracker_date_range WHERE idx = 1) AND (SELECT end_date FROM expense_tracker_date_range WHERE idx = 1) AND e2.idx <= e.idx) AS row_num, e.* FROM expense_tracker e WHERE e.user_id IS NULL AND e.date BETWEEN (SELECT start_date FROM expense_tracker_date_range WHERE idx = 1) AND (SELECT end_date FROM expense_tracker_date_range WHERE idx = 1) ORDER BY e.idx DESC;";
-} else {
+if (isset($_SESSION['ID'])) {
   $user_id = $_SESSION['ID'];
-  $query = "SELECT (SELECT COUNT(*) FROM expense_tracker e2 WHERE user_id='{$user_id}' AND e2.date BETWEEN (SELECT start_date FROM expense_tracker_date_range WHERE idx = 1) AND (SELECT end_date FROM expense_tracker_date_range WHERE idx = 1) AND e2.idx <= e.idx) AS row_num, e.* FROM expense_tracker e WHERE user_id='{$user_id}' AND e.date BETWEEN (SELECT start_date FROM expense_tracker_date_range WHERE idx = 1) AND (SELECT end_date FROM expense_tracker_date_range WHERE idx = 1) ORDER BY row_num DESC;";
+  $query = "SELECT * FROM expense_tracker WHERE date BETWEEN(SELECT start_date FROM expense_tracker_date_range WHERE idx = 1) AND (SELECT end_date FROM expense_tracker_date_range WHERE idx = 1) AND user_id='{$user_id}' ORDER BY idx DESC";
+} else {
+  $query = "SELECT * FROM expense_tracker WHERE date BETWEEN(SELECT start_date FROM expense_tracker_date_range WHERE idx = 1) AND (SELECT end_date FROM expense_tracker_date_range WHERE idx = 1) AND user_id IS NULL ORDER BY idx DESC";
 }
 
 $result = $conn->query($query);
@@ -20,19 +19,38 @@ while ($row = mysqli_fetch_array($result)) {
 ?>
 
 <?php
-$query = "SELECT * FROM expense_tracker_date_range";
+if (isset($_SESSION['ID'])) {
+  $user_id = $_SESSION['ID'];
 
-$result = $conn->query($query);
+  $query = "SELECT * FROM expense_tracker_date_range WHERE user_id='{$user_id}'";
 
-if ($result->num_rows > 0) {
-  $row = $result->fetch_assoc();
-  $startDate = $row['start_date'];
-  $endDate = $row['end_date'];
+  $result = $conn->query($query);
+
+  if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $startDate = $row['start_date'];
+    $endDate = $row['end_date'];
+  } else {
+    // 데이터가 없는 경우 기본 값을 설정하거나 오류 처리
+    $startDate = "";
+    $endDate = "";
+  }
 } else {
-  // 데이터가 없는 경우 기본 값을 설정하거나 오류 처리
-  $startDate = "";
-  $endDate = "";
+  $query = "SELECT * FROM expense_tracker_date_range WHERE user_id IS NULL";
+
+  $result = $conn->query($query);
+
+  if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $startDate = $row['start_date'];
+    $endDate = $row['end_date'];
+  } else {
+    // 데이터가 없는 경우 기본 값을 설정하거나 오류 처리
+    $startDate = "";
+    $endDate = "";
+  }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -215,7 +233,7 @@ if ($result->num_rows > 0) {
                 </th>
 
                 <th scope="row" class="idx">
-                  <input type="number" value="<?php echo $row['row_num']; ?>" disabled>
+                  <input type="number" class="idx_input" value="" disabled>
                 </th>
                 <td>
                   <input type="text" class="datepicker" name="date[]" value="<?php echo $row['date']; ?>" disabled>
