@@ -227,6 +227,14 @@ $(document).on("click", ".cancel_btn", function () {
   }
 });
 
+/* 출력되는 DB 데이터 넘버링 */
+const dbOutputRow = $(".db_output tr");
+dbOutputRow.each(function (index) {
+  $(this)
+    .find(".idx_input")
+    .attr("value", dbOutputRow.length - index);
+});
+
 /********** module - addValue **********/
 function addValue() {
   if (date.val() && item.val() && amount.val()) {
