@@ -5,7 +5,7 @@ session_start();
 
 if (isset($_SESSION['ID'])) {
   $user_id = $_SESSION['ID'];
-  $query = "SELECT * FROM expense_tracker WHERE date BETWEEN(SELECT start_date FROM expense_tracker_date_range WHERE idx = 1) AND (SELECT end_date FROM expense_tracker_date_range WHERE idx = 1) AND user_id='{$user_id}' ORDER BY idx DESC";
+  $query = "SELECT * FROM expense_tracker WHERE date BETWEEN(SELECT start_date FROM expense_tracker_date_range WHERE user_id='{$user_id}') AND (SELECT end_date FROM expense_tracker_date_range WHERE user_id='{$user_id}') AND user_id='{$user_id}' ORDER BY idx DESC";
 } else {
   $query = "SELECT * FROM expense_tracker WHERE date BETWEEN(SELECT start_date FROM expense_tracker_date_range WHERE idx = 1) AND (SELECT end_date FROM expense_tracker_date_range WHERE idx = 1) AND user_id IS NULL ORDER BY idx DESC";
 }
