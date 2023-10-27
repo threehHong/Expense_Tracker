@@ -123,7 +123,7 @@ include "../config/db_connect.php";
         },
         success: function(response) {
           if (response.user_id_check === "아이디 중복") {
-            signupIdInput.siblings('.validation_message').text('중복된 아이디 입니다.');
+            signupIdInput.siblings('.validation_message').text('중복된 아이디입니다');
             isIdValid = true;
             checkAllValid()
           } else {
@@ -162,11 +162,11 @@ include "../config/db_connect.php";
       if (!emailRegEx.test($(this).val())) {
         $(this).siblings('.validation_message').text('이메일 형식 불일치');
         isEmailValid = false;
-        checkAllValid()
+        checkAllValid();
       } else {
         $(this).siblings('.validation_message').text('');
         isEmailValid = true;
-        checkAllValid()
+        checkAllValid();
       }
     });
 
@@ -176,22 +176,41 @@ include "../config/db_connect.php";
         isEmailValid = false;
         checkAllValid()
       } else if (emailRegEx.test(emailInput.val())) {
-        emailVerificationCode.css({
-          "display": "block",
-          "opacity": "1",
-          "transition": "1s",
-        });
-        isEmailValid = true;
-
         $.ajax({
           type: "POST",
-          url: "../database/account/email_verification.php",
+          url: "../database/account/sign_up_validation_ajax.php",
           data: {
-            action: emailInput.val()
+            emailInputValue: emailInput.val()
           },
           success: function(response) {
             response = JSON.parse(response);
-            verificationCode = response.verification_code;
+            console.log(response);
+            /* console.log(response.user_email_check); */
+            if (response.user_email_check === "이메일 중복") {
+              emailInput.siblings('.validation_message').text("사용된 이메일입니다");
+            } else {
+              emailVerificationCode.css({
+                "display": "block",
+                "opacity": "1",
+                "transition": "1s",
+              });
+              isEmailValid = true;
+
+              $.ajax({
+                type: "POST",
+                url: "../database/account/email_verification.php",
+                data: {
+                  action: emailInput.val()
+                },
+                success: function(response) {
+                  response = JSON.parse(response);
+                  verificationCode = response.verification_code;
+                },
+                error: function(error) {
+                  console.error(error);
+                }
+              });
+            }
           },
           error: function(error) {
             console.error(error);
