@@ -38,12 +38,13 @@
 <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=MySQL&logoColor=white"> <br>
 <img src="https://img.shields.io/badge/Chart.js-FF6384?style=for-the-badge&logo=Chart.js&logoColor=white">
 <img src="https://img.shields.io/badge/ExcelJS-217346?style=for-the-badge&logo=ExcelJS&logoColor=white">
+<img src="https://img.shields.io/badge/PHPMailer-000000?style=for-the-badge&logo=PHPMailer&logoColor=white">
 
 <br>
 
 ## 주요 기능
 
-<details open>
+<details closed>
     <summary> i. 입력한 데이터들중 같은 항목값들은 자동을 계산되어 그래프로 표시. </summary>
     <br>
     <img src="./assets/README/features1.png" width="400px" />
@@ -52,7 +53,7 @@
 
 <br>
 
-<details open>
+<details closed>
     <summary> ii. 원하는 구간을 설정하면 해당 구간에 지출한 내역만 표시.</summary>
     <br>
     <img src="./assets/README/features2-1.png" width="400px" height="350px"/> &nbsp;
@@ -62,7 +63,7 @@
 
 <br>
 
-<details open>
+<details closed>
     <summary> iii. 저장한 데이터를 Excel 파일로 다운. </summary>
     <br>
     지정한 구간에 있는 데이터만 엑셀에 정리. 
@@ -74,12 +75,18 @@
 
 <br>
 
-### 추가 구현 계획
+<details closed>
+    <summary> iv. 로그인, 회원가입, 이메일 인증. </summary>
+    <br>
+    <img src="./assets/README/features4-1.png" width="400px" height="350px" /> &nbsp;
+    <img src="./assets/README/features4-2.png" width="400px" height="350px" />
+    <br> <br>
+</details>
 
-- 회원가입 및 로그인 기능 추가.
+<br>
+
+### 추가 구현 계획
 
 - 버그 및 기능 수정 보완.
 
-- 로고 추가 및 디자인 수정 보완.
-
-- 반응형(모바일에서 사용할 수 있도록).
+-
